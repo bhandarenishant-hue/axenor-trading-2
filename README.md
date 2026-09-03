@@ -24,9 +24,9 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
 
 ## Assets
 
-- `public/brand/` — logo variants cropped from the brand identity board: `logo-light.png` (navy on
-  transparent, for light backgrounds), `logo-dark.png` (white on transparent, for navy backgrounds),
-  `icon.png`, `wordmark.png`, `favicon.png`.
+- `public/brand/` — logo variants cropped from the brand identity board: `logo-light.png` (dark logo
+  for light backgrounds), `logo-dark.png` (white logo for dark backgrounds), `icon.png`,
+  `wordmark.png`, `favicon.png`.
 - `public/images/hero.jpg` — the client-supplied port scene used in the hero, about and CTA sections.
 - `public/images/categories/` and `public/images/products/` — royalty-free stock photos from Unsplash
   and Pexels, chosen as stand-ins until real product photography is available.
@@ -44,9 +44,9 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
 ## Animation
 
 Shared helpers live in `src/components/motion.jsx` (`FadeUp`, `SlideIn`, `Stagger`, `StaggerItem`)
-with the easing curve in `src/lib/animation.js`. The hero slider auto-rotates every 6.5 seconds, pauses
-on hover, and slides text and card content in opposite directions. All motion is disabled when the
-visitor has reduced motion enabled.
+with the easing curve in `src/lib/animation.js`. The hero slider auto-rotates every 6.5 seconds and
+pauses on hover. The hero product orbit rotates anticlockwise while each item counter-rotates so
+photos and labels stay upright. All motion is disabled when the visitor has reduced motion enabled.
 
 ## Inquiry form
 
@@ -56,24 +56,25 @@ or form service when one exists.
 
 ## Design tokens
 
-Colors and fonts are defined in  under . The palette is built from five
-client-supplied colours, with three shades derived so accent text and borders reach a readable contrast.
+Colors and fonts are defined in `src/index.css` under `@theme`. The palette is built from five
+client-supplied colours, with four values derived from them so that accent text and borders reach a
+readable contrast.
 
 | Token | Hex | Source | Role |
 | --- | --- | --- | --- |
-|  | #36453b | Dark Slate Grey | Dark sections, footer, headings, primary buttons |
-|  | #515751 | Ebony | Raised surfaces on dark, button hover |
-|  | #c2c1a5 | Dry Sage | Accent: icons, rules, category pills, accent button |
-|  | #d7d6c2 | derived | Accent text on dark backgrounds |
-|  | #6f6a4a | derived | Accent text on light backgrounds |
-|  | #f5f9e9 | Ivory | Page background |
-|  | #e9eed7 | derived | Subtle alternate surface |
-|  | #dbdac4 | derived | Borders and dividers |
-|  | #596869 | Dim Grey | Secondary body text |
+| `forest` | #36453b | Dark Slate Grey | Dark sections, footer, headings, primary buttons |
+| `forest-light` | #515751 | Ebony | Raised surfaces on dark, button hover |
+| `sage` | #c2c1a5 | Dry Sage | Accent: icons, rules, category pills, accent button |
+| `sage-light` | #d7d6c2 | derived | Accent text on dark backgrounds |
+| `sage-dark` | #6f6a4a | derived | Accent text on light backgrounds |
+| `ivory` | #f5f9e9 | Ivory | Page background |
+| `ivory-dark` | #e9eed7 | derived | Subtle alternate surface |
+| `line` | #dbdac4 | derived | Borders and dividers |
+| `slate` | #596869 | Dim Grey | Secondary body text |
 
 Card surfaces use plain white to lift off the ivory page. Every text pairing meets WCAG AA, the
-tightest being sage-dark on ivory at 5.1:1.
+tightest being `sage-dark` on `ivory` at 5.1:1.
 
-Note: the logo files in  come from the client's identity board and still carry the
+Note: the logo files in `public/brand/` come from the client's identity board and still carry the
 original navy and gold brand colours, so they do not match this palette. Replace them with sage
-versions if the brand identity is being changed too.
+versions if the brand identity is being restyled too.
