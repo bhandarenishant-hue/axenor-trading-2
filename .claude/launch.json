@@ -4,7 +4,7 @@
     {
       "name": "axenor-dev",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "C:/Users/dell/website/.claude/dev.cmd"],
+      "runtimeArgs": ["/c", "C:/Users/dell/AT/.claude/dev.cmd"],
       "port": 5173
     }
   ]

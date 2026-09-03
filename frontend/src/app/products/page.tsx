@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ProductGrid } from "@/components/ProductGrid";
-import { api, type Product } from "@/lib/api";
+import { products } from "@/data/products";
+import { getCategories, type Product } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -8,17 +9,20 @@ export const metadata: Metadata = {
     "Explore Axenor Trading's product catalogue — textiles, chemicals, electronics, hardware, spices and more sourced from India and China.",
 };
 
-export default async function ProductsPage() {
-  let products: Product[] = [];
-  let categories: string[] = [];
+export default function ProductsPage() {
+  const allProducts: Product[] = products.map((p) => ({
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    sourceMarket: p.sourceMarket,
+    description: p.description,
+    highlights: p.highlights,
+    specifications: p.specifications,
+    image: p.image,
+  }));
 
-  try {
-    const res = await api.products.list({ limit: 100 });
-    products = res.data;
-    categories = [...new Set(products.map((p) => p.category))];
-  } catch {
-    // API may not be available during build
-  }
+  const categories = getCategories();
 
   return (
     <div className="pt-20 lg:pt-24">
@@ -42,7 +46,7 @@ export default async function ProductsPage() {
 
       <section className="py-12 lg:py-16 bg-off-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ProductGrid initialProducts={products} categories={categories} />
+          <ProductGrid initialProducts={allProducts} categories={categories} />
         </div>
       </section>
     </div>

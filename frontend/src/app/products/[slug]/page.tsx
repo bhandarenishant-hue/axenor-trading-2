@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { api } from "@/lib/api";
+import { getProductBySlug, products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { InquiryForm } from "@/components/InquiryForm";
 
@@ -11,26 +11,28 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  try {
-    const product = await api.products.get(slug);
-    return {
-      title: product.name,
-      description: product.description,
-    };
-  } catch {
-    return { title: "Product Not Found" };
-  }
+  const result = getProductBySlug(slug);
+  if (!result) return { title: "Product Not Found" };
+  return {
+    title: result.name,
+    description: result.description,
+  };
+}
+
+export function generateStaticParams() {
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
+  const result = getProductBySlug(slug);
 
-  let product;
-  try {
-    product = await api.products.get(slug);
-  } catch {
+  if (!result) {
     notFound();
   }
+
+  const product = result;
+  const relatedProducts = result.relatedProducts;
 
   return (
     <div className="pt-20 lg:pt-24">
@@ -79,7 +81,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
             <div>
               <span className="inline-block text-[10px] tracking-wider uppercase bg-deep-navy text-white px-3 py-1 mb-4">
-                {product.sourceMarket === "india" ? "🇮🇳 India" : "🇨🇳 China"}
+                {product.sourceMarket === "india" ? "\u{1F1EE}\u{1F1F3} India" : "\u{1F1E8}\u{1F1F3} China"}
               </span>
               <p className="text-teal text-xs tracking-[0.15em] uppercase font-medium mb-2">
                 {product.category}
@@ -166,15 +168,28 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {product.relatedProducts && product.relatedProducts.length > 0 && (
+      {relatedProducts.length > 0 && (
         <section className="py-12 lg:py-16 bg-white border-t border-deep-navy/5">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 className="font-display text-2xl text-deep-navy mb-8">
               Related Products
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {product.relatedProducts.slice(0, 3).map((rp) => (
-                <ProductCard key={rp.id} product={rp} />
+              {relatedProducts.slice(0, 3).map((rp) => (
+                <ProductCard
+                  key={rp.id}
+                  product={{
+                    id: rp.id,
+                    slug: rp.slug,
+                    name: rp.name,
+                    category: rp.category,
+                    sourceMarket: rp.sourceMarket,
+                    description: rp.description,
+                    highlights: rp.highlights,
+                    specifications: rp.specifications,
+                    image: rp.image,
+                  }}
+                />
               ))}
             </div>
           </div>

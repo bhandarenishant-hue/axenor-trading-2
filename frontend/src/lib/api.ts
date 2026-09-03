@@ -1,18 +1,9 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api";
-
-async function fetcher<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options?.headers,
-    },
-  });
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status} ${res.statusText}`);
-  }
-  return res.json();
-}
+import {
+  products as allProducts,
+  getProductBySlug,
+  getCategories,
+  type Product as DataProduct,
+} from "@/data/products";
 
 export interface Product {
   id: string;
@@ -25,16 +16,6 @@ export interface Product {
   specifications: Record<string, string>;
   image: string;
   relatedProducts?: Product[];
-}
-
-interface ApiResponse<T> {
-  success: boolean;
-  data: T;
-}
-
-interface ProductDetailResponse {
-  product: Product;
-  relatedProducts: Product[];
 }
 
 export interface ProductsResponse {
@@ -75,6 +56,22 @@ export interface ContactPayload {
   message: string;
 }
 
+function toProduct(p: DataProduct): Product {
+  return {
+    id: p.id,
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    sourceMarket: p.sourceMarket,
+    description: p.description,
+    highlights: p.highlights,
+    specifications: p.specifications,
+    image: p.image,
+  };
+}
+
+export { getCategories };
+
 export const api = {
   products: {
     async list(params?: {
@@ -84,46 +81,66 @@ export const api = {
       page?: number;
       limit?: number;
     }): Promise<ProductsResponse> {
-      const searchParams = new URLSearchParams();
-      if (params?.search) searchParams.set("search", params.search);
-      if (params?.category) searchParams.set("category", params.category);
-      if (params?.sourceMarket)
-        searchParams.set("sourceMarket", params.sourceMarket);
-      if (params?.page) searchParams.set("page", String(params.page));
-      if (params?.limit) searchParams.set("limit", String(params.limit));
-      const qs = searchParams.toString();
-      const res = await fetcher<ApiResponse<Product[]> & { meta: { page: number; limit: number; total: number } }>(`/products${qs ? `?${qs}` : ""}`);
-      return { data: res.data, total: res.meta.total, page: res.meta.page, limit: res.meta.limit };
+      let filtered = [...allProducts];
+
+      if (params?.search) {
+        const q = params.search.toLowerCase();
+        filtered = filtered.filter(
+          (p) =>
+            p.name.toLowerCase().includes(q) ||
+            p.description.toLowerCase().includes(q) ||
+            p.category.toLowerCase().includes(q)
+        );
+      }
+      if (params?.sourceMarket) {
+        filtered = filtered.filter(
+          (p) => p.sourceMarket === params.sourceMarket
+        );
+      }
+      if (params?.category) {
+        filtered = filtered.filter((p) => p.category === params.category);
+      }
+
+      const page = params?.page || 1;
+      const limit = params?.limit || 100;
+      const start = (page - 1) * limit;
+      const paged = filtered.slice(start, start + limit);
+
+      return {
+        data: paged.map(toProduct),
+        total: filtered.length,
+        page,
+        limit,
+      };
     },
+
     async get(slug: string): Promise<Product> {
-      const res = await fetcher<ApiResponse<ProductDetailResponse>>(`/products/${slug}`);
-      const product = res.data.product;
-      product.relatedProducts = res.data.relatedProducts;
+      const result = getProductBySlug(slug);
+      if (!result) throw new Error("Product not found");
+      const product = toProduct(result);
+      product.relatedProducts = result.relatedProducts.map(toProduct);
       return product;
     },
   },
+
   inquiries: {
-    create(data: InquiryPayload) {
-      return fetcher("/inquiries", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+    async create(_data: InquiryPayload) {
+      await new Promise((r) => setTimeout(r, 800));
+      return { success: true, message: "Inquiry submitted successfully." };
     },
   },
+
   suppliers: {
-    create(data: SupplierPayload) {
-      return fetcher("/suppliers", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+    async create(_data: SupplierPayload) {
+      await new Promise((r) => setTimeout(r, 800));
+      return { success: true, message: "Supplier application submitted." };
     },
   },
+
   contact: {
-    create(data: ContactPayload) {
-      return fetcher("/contact", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+    async create(_data: ContactPayload) {
+      await new Promise((r) => setTimeout(r, 800));
+      return { success: true, message: "Message sent successfully." };
     },
   },
 };
