@@ -6,8 +6,8 @@ import { company } from '../data/company'
 import { categories } from '../data/products'
 
 export default function Footer() {
-  const { contact, social } = company
-  const hasContact = contact.address || contact.phone || contact.email
+  const { contact, social, registration } = company
+  const hasContact = contact.address || contact.phone || contact.email || contact.registeredAddress
   const year = new Date().getFullYear()
 
   return (
@@ -48,6 +48,17 @@ export default function Footer() {
               {contact.address && (
                 <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sage" /><span>{contact.address}</span></li>
               )}
+              {!contact.address && contact.registeredAddress && (
+                <li className="flex gap-3">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sage" />
+                  <span>
+                    <span className="block text-xs uppercase tracking-[0.14em] text-sage-light">Registered office</span>
+                    {contact.registeredAddress.map((line) => (
+                      <span key={line} className="block">{line}</span>
+                    ))}
+                  </span>
+                </li>
+              )}
               {contact.phone && (
                 <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-sage" /><a href={`tel:${contact.phone}`} className="hover:text-ivory">{contact.phone}</a></li>
               )}
@@ -76,7 +87,11 @@ export default function Footer() {
 
       <div className="border-t border-ivory/10">
         <Container className="flex flex-col items-start justify-between gap-2 py-6 text-xs text-ivory/50 sm:flex-row sm:items-center">
-          <p>© {year} {company.name}. All rights reserved.</p>
+          <p>
+            {/* The legal name may already end in a period, as with "Sdn. Bhd." */}
+            © {year} {(company.legalName ?? company.name).replace(/\.$/, '')}. All rights reserved.
+            {registration?.number && <span className="ml-1">Company No. {registration.number}.</span>}
+          </p>
           <p>Export-oriented B2B trading from {company.origin}.</p>
         </Container>
       </div>

@@ -4,17 +4,43 @@
 
 export const company = {
   name: 'Axenor Trading',
+  legalName: 'Axenor Trading Sdn. Bhd.',
   tagline: 'Connecting Markets. Building Trade.',
   about:
     'India-based B2B trading company focused on sourcing and supplying quality Indian products to international markets.',
+
+  // The origin shown on the site as the source of the products.
+  // NOTE: this is the sourcing origin, not the country of incorporation,
+  // which is Malaysia. See `registration` below.
   origin: 'India',
 
-  // TBD — leave null until confirmed.
+  // Taken from the SSM (Companies Commission of Malaysia) corporate information
+  // extract supplied by the client. These are public-record facts; do not edit
+  // them without a newer extract.
+  registration: {
+    number: '202601023683',
+    formerNumber: '1685780-W',
+    incorporated: '10 June 2026',
+    type: 'Private limited company, limited by shares',
+    status: 'Existing',
+    natureOfBusiness: 'Wholesale of textiles and clothing',
+    country: 'Malaysia',
+    authority: 'Companies Commission of Malaysia (SSM)',
+  },
+
   contact: {
+    // Registered office from the SSM extract. The extract lists no separate
+    // business address, so that stays null until the client confirms one.
+    registeredAddress: [
+      'Business Suite Unit 19A-24-3, Level 24',
+      'Wisma UOA No. 19, Jalan Pinang',
+      '50450 Kuala Lumpur',
+      'W.P. Kuala Lumpur, Malaysia',
+    ],
     address: null,
     phone: null,
     email: null,
-    whatsapp: null, // e.g. '+91XXXXXXXXXX' — enables the floating WhatsApp button
+    whatsapp: null, // e.g. '+60XXXXXXXXX' — enables the floating WhatsApp button
   },
 
   // TBD — add entries like { label: 'LinkedIn', href: 'https://...' }

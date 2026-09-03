@@ -11,7 +11,7 @@ export default function Contact() {
   const productSlug = params.get('product') || ''
   const product = getProduct(productSlug)
   const { contact, social } = company
-  const hasContact = contact.address || contact.phone || contact.email
+  const hasContact = contact.address || contact.phone || contact.email || contact.registeredAddress
 
   return (
     <>
@@ -54,6 +54,19 @@ export default function Contact() {
                 <ul className="mt-5 space-y-4 text-sm text-forest">
                   {contact.address && (
                     <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sage-dark" /><span>{contact.address}</span></li>
+                  )}
+                  {!contact.address && contact.registeredAddress && (
+                    <li className="flex gap-3">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sage-dark" />
+                      <span>
+                        <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-sage-dark">
+                          Registered office
+                        </span>
+                        {contact.registeredAddress.map((line) => (
+                          <span key={line} className="block">{line}</span>
+                        ))}
+                      </span>
+                    </li>
                   )}
                   {contact.phone && (
                     <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-sage-dark" /><a href={`tel:${contact.phone}`} className="hover:text-sage-dark">{contact.phone}</a></li>

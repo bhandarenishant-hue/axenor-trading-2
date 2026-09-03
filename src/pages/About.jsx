@@ -98,6 +98,51 @@ export default function About() {
         </Container>
       </section>
 
+      {/* Registry details, shown only once they exist in company.js */}
+      {company.registration && (
+        <section className="border-b border-line py-20">
+          <Container className="grid gap-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-4">
+              <SectionHeading eyebrow="Company information" title="Registered details." />
+              <p className="mt-5 text-sm leading-relaxed text-slate">
+                As recorded with the {company.registration.authority}.
+              </p>
+            </Reveal>
+            <Reveal delay={100} className="lg:col-span-8">
+              <dl className="divide-y divide-line rounded-lg border border-line bg-white">
+                {[
+                  ['Registered name', company.legalName],
+                  ['Company number', company.registration.formerNumber
+                    ? `${company.registration.number} (${company.registration.formerNumber})`
+                    : company.registration.number],
+                  ['Incorporated', company.registration.incorporated],
+                  ['Entity type', company.registration.type],
+                  ['Nature of business', company.registration.natureOfBusiness],
+                  ['Country of incorporation', company.registration.country],
+                ]
+                  .filter(([, value]) => value)
+                  .map(([label, value]) => (
+                    <div key={label} className="grid gap-1 px-5 py-4 sm:grid-cols-3 sm:gap-6">
+                      <dt className="text-sm font-medium text-slate">{label}</dt>
+                      <dd className="text-sm text-forest sm:col-span-2">{value}</dd>
+                    </div>
+                  ))}
+                {company.contact.registeredAddress && (
+                  <div className="grid gap-1 px-5 py-4 sm:grid-cols-3 sm:gap-6">
+                    <dt className="text-sm font-medium text-slate">Registered office</dt>
+                    <dd className="text-sm text-forest sm:col-span-2">
+                      {company.contact.registeredAddress.map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </Reveal>
+          </Container>
+        </section>
+      )}
+
       <section className="py-20">
         <Container className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
