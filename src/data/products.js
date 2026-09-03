@@ -402,7 +402,7 @@ export const products = [
       'Packaged savoury snacks including bhujia, mixtures, chips and other traditional namkeen. Supplied in retail pack sizes with shelf life and labelling suited to export.',
     highlights: ['Bhujia, mixtures, chips and more', 'Retail pack sizes', 'Export-ready labelling'],
     specs: { Types: 'Bhujia, mixtures, chips, traditional namkeen', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
-    image: '/images/products/dry-red-chillies.jpg',
+    image: '/images/products/indian-namkeen-snacks.jpg',
   },
   {
     id: 19,
@@ -415,7 +415,7 @@ export const products = [
       'Packaged biscuits and cookies including glucose, ivory, digestive and cracker varieties. Available in retail packs and family packs with export labelling.',
     highlights: ['Glucose, ivory, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
     specs: { Types: 'Glucose, ivory, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
-    image: '/images/products/dry-red-chillies.jpg',
+    image: '/images/products/biscuits-and-cookies.jpg',
   },
 ]
 
