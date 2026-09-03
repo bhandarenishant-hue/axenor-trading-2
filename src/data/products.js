@@ -293,11 +293,11 @@ export const products = [
     name: 'Biscuits & Cookies',
     category: 'snacks',
     featured: false,
-    summary: 'Packaged biscuits and cookies across sweet, cream and cracker ranges.',
+    summary: 'Packaged biscuits and cookies across sweet, ivory and cracker ranges.',
     description:
-      'Packaged biscuits and cookies including glucose, cream, digestive and cracker varieties. Available in retail packs and family packs with export labelling.',
-    highlights: ['Glucose, cream, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
-    specs: { Types: 'Glucose, cream, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
+      'Packaged biscuits and cookies including glucose, ivory, digestive and cracker varieties. Available in retail packs and family packs with export labelling.',
+    highlights: ['Glucose, ivory, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
+    specs: { Types: 'Glucose, ivory, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
     image: '/images/products/dry-red-chillies.jpg',
   },
 ]

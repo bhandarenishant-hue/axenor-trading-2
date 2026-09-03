@@ -26,15 +26,15 @@ export default function Navbar() {
 
   const linkClass = ({ isActive }) =>
     `relative py-1 text-sm font-medium tracking-tight transition-colors ${
-      isActive ? 'text-navy' : 'text-slate hover:text-navy'
-    } after:absolute after:-bottom-0.5 after:left-0 after:h-px after:bg-gold after:transition-all after:duration-300 ${
+      isActive ? 'text-forest' : 'text-slate hover:text-forest'
+    } after:absolute after:-bottom-0.5 after:left-0 after:h-px after:bg-sage after:transition-all after:duration-300 ${
       isActive ? 'after:w-full' : 'after:w-0 hover:after:w-full'
     }`
 
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-        scrolled ? 'border-line bg-cream/90 backdrop-blur-md' : 'border-transparent bg-cream'
+        scrolled ? 'border-line bg-ivory/90 backdrop-blur-md' : 'border-transparent bg-ivory'
       }`}
     >
       <Container className="flex h-[72px] items-center justify-between">
@@ -56,7 +56,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-navy md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-forest md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
@@ -68,7 +68,7 @@ export default function Navbar() {
 
       <div
         id="mobile-nav"
-        className={`overflow-hidden border-t border-line bg-cream transition-[max-height] duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-line bg-ivory transition-[max-height] duration-300 md:hidden ${
           open ? 'max-h-96' : 'max-h-0 border-t-0'
         }`}
       >
@@ -80,7 +80,7 @@ export default function Navbar() {
               end={l.end}
               onClick={close}
               className={({ isActive }) =>
-                `rounded-md px-3 py-2.5 text-base font-medium ${isActive ? 'bg-cream-dark text-navy' : 'text-slate'}`
+                `rounded-md px-3 py-2.5 text-base font-medium ${isActive ? 'bg-ivory-dark text-forest' : 'text-slate'}`
               }
             >
               {l.label}

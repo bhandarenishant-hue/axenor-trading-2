@@ -20,11 +20,11 @@ export default function ProductDetail() {
       <section className="border-b border-line bg-white">
         <Container className="py-5">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-sm text-slate">
-            <Link to="/products" className="hover:text-navy">Products</Link>
+            <Link to="/products" className="hover:text-forest">Products</Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link to={`/products?category=${category.slug}`} className="hover:text-navy">{category.short}</Link>
+            <Link to={`/products?category=${category.slug}`} className="hover:text-forest">{category.short}</Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <span className="text-navy">{product.name}</span>
+            <span className="text-forest">{product.name}</span>
           </nav>
         </Container>
       </section>
@@ -38,14 +38,14 @@ export default function ProductDetail() {
           </Reveal>
 
           <Reveal delay={100} className="lg:col-span-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">{category.name}</p>
-            <h1 className="mt-3 text-4xl font-extrabold leading-tight text-navy sm:text-5xl">{product.name}</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">{category.name}</p>
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight text-forest sm:text-5xl">{product.name}</h1>
             <p className="mt-5 text-lg leading-relaxed text-slate">{product.description}</p>
 
             <ul className="mt-7 space-y-2.5">
               {product.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 text-sm text-navy">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-dark">
+                <li key={h} className="flex items-start gap-3 text-sm text-forest">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sage/20 text-sage-dark">
                     <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
                   {h}
@@ -69,7 +69,7 @@ export default function ProductDetail() {
       <section className="border-t border-line bg-white py-14">
         <Container className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <h2 className="text-2xl font-bold text-navy">Specifications</h2>
+            <h2 className="text-2xl font-bold text-forest">Specifications</h2>
             <p className="mt-2 text-sm text-slate">Indicative specifications. Final details are confirmed against your requirement.</p>
           </div>
           <div className="lg:col-span-8">
@@ -77,12 +77,12 @@ export default function ProductDetail() {
               {Object.entries(product.specs).map(([k, v]) => (
                 <div key={k} className="grid gap-1 px-5 py-4 sm:grid-cols-3 sm:gap-6">
                   <dt className="text-sm font-medium text-slate">{k}</dt>
-                  <dd className="text-sm text-navy sm:col-span-2">{v}</dd>
+                  <dd className="text-sm text-forest sm:col-span-2">{v}</dd>
                 </div>
               ))}
               <div className="grid gap-1 px-5 py-4 sm:grid-cols-3 sm:gap-6">
                 <dt className="text-sm font-medium text-slate">Pricing</dt>
-                <dd className="text-sm text-navy sm:col-span-2">On request</dd>
+                <dd className="text-sm text-forest sm:col-span-2">On request</dd>
               </div>
             </dl>
           </div>
@@ -93,8 +93,8 @@ export default function ProductDetail() {
         <section className="py-20">
           <Container>
             <div className="flex items-end justify-between">
-              <h2 className="text-2xl font-bold text-navy sm:text-3xl">More in {category.short}</h2>
-              <Link to={`/products?category=${category.slug}`} className="hidden items-center gap-1.5 text-sm font-medium text-navy hover:text-gold-dark sm:inline-flex">
+              <h2 className="text-2xl font-bold text-forest sm:text-3xl">More in {category.short}</h2>
+              <Link to={`/products?category=${category.slug}`} className="hidden items-center gap-1.5 text-sm font-medium text-forest hover:text-sage-dark sm:inline-flex">
                 View all <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { company } from '../data/company'
 
-// Brand logo cropped from the identity board. `light` picks the white-on-navy version.
+// Brand logo cropped from the client's identity board, so it keeps the original
+// navy and gold brand colours. `light` picks the white-on-navy variant for dark surfaces.
 export default function Logo({ light = false, className = '', height = 'h-11' }) {
   return (
     <Link to="/" className={`inline-flex items-center ${className}`} aria-label={`${company.name} home`}>

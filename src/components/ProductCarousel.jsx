@@ -23,7 +23,7 @@ export default function ProductCarousel({ products }) {
   const canNext = embla ? embla.canScrollNext() : true
 
   const arrow =
-    'flex h-11 w-11 items-center justify-center rounded-full border border-navy/20 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-navy/20 disabled:hover:bg-transparent disabled:hover:text-navy'
+    'flex h-11 w-11 items-center justify-center rounded-full border border-forest/20 text-forest transition-colors hover:border-forest hover:bg-forest hover:text-ivory disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-forest/20 disabled:hover:bg-transparent disabled:hover:text-forest'
 
   return (
     <div>

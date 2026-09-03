@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
 const variants = {
-  primary: 'bg-navy text-cream hover:bg-navy-light',
-  gold: 'bg-gold text-navy hover:bg-gold-light',
-  outline: 'border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-cream',
-  ghost: 'text-navy hover:text-gold-dark',
-  inverse: 'bg-cream text-navy hover:bg-white',
+  primary: 'bg-forest text-ivory hover:bg-forest-light',
+  sage: 'bg-sage text-forest hover:bg-sage-light',
+  outline: 'border border-forest/25 text-forest hover:border-forest hover:bg-forest hover:text-ivory',
+  ghost: 'text-forest hover:text-sage-dark',
+  inverse: 'bg-ivory text-forest hover:bg-white',
 }
 
 const sizes = {
@@ -14,7 +14,7 @@ const sizes = {
 }
 
 export default function Button({ to, href, variant = 'primary', size = 'md', className = '', children, ...rest }) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-tight transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:cursor-not-allowed disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`
+  const classes = `inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-tight transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-ivory disabled:cursor-not-allowed disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`
 
   if (to) {
     return (

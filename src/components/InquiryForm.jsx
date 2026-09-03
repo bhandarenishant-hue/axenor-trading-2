@@ -6,14 +6,14 @@ import { products, categories } from '../data/products'
 const initial = { name: '', company: '', email: '', phone: '', product: '', quantity: '', message: '' }
 
 const fieldClass =
-  'w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-navy placeholder:text-slate/60 transition-colors focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 aria-[invalid=true]:border-red-500'
+  'w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-forest placeholder:text-slate/60 transition-colors focus:border-sage focus:outline-none focus:ring-2 focus:ring-sage/30 aria-[invalid=true]:border-red-500'
 
 function Field({ label, id, error, required, children }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-forest">
         {label}
-        {required && <span className="ml-0.5 text-gold-dark">*</span>}
+        {required && <span className="ml-0.5 text-sage-dark">*</span>}
       </label>
       {children}
       {error && (
@@ -64,9 +64,9 @@ export default function InquiryForm({ defaultProduct = '' }) {
   if (status === 'success') {
     const product = products.find((p) => p.slug === values.product)
     return (
-      <div className="rounded-lg border border-gold/40 bg-white p-8 text-center">
-        <CheckCircle2 className="mx-auto h-10 w-10 text-gold-dark" strokeWidth={1.5} />
-        <h3 className="mt-4 text-xl font-bold text-navy">Inquiry received</h3>
+      <div className="rounded-lg border border-sage/40 bg-white p-8 text-center">
+        <CheckCircle2 className="mx-auto h-10 w-10 text-sage-dark" strokeWidth={1.5} />
+        <h3 className="mt-4 text-xl font-bold text-forest">Inquiry received</h3>
         <p className="mt-2 text-sm leading-relaxed text-slate">
           Thank you, {values.name.split(' ')[0]}. We have noted your inquiry
           {product ? ` for ${product.name}` : ''} and will get back to you at {values.email}.

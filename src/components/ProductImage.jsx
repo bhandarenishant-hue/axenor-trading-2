@@ -19,7 +19,7 @@ export default function ProductImage({ product, className = '', iconClass = 'h-1
 
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-navy ${className}`}
+      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-forest ${className}`}
       role="img"
       aria-label={`${product.name} placeholder image`}
     >
@@ -27,15 +27,15 @@ export default function ProductImage({ product, className = '', iconClass = 'h-1
         className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            'linear-gradient(#f8f7f4 1px, transparent 1px), linear-gradient(90deg, #f8f7f4 1px, transparent 1px)',
+            'linear-gradient(#f5f9e9 1px, transparent 1px), linear-gradient(90deg, #f5f9e9 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
       />
-      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full border border-gold/20" />
-      <div className="absolute -bottom-14 -left-14 h-48 w-48 rounded-full border border-gold/15" />
-      <div className="relative flex flex-col items-center gap-3 text-gold">
+      <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full border border-sage/20" />
+      <div className="absolute -bottom-14 -left-14 h-48 w-48 rounded-full border border-sage/15" />
+      <div className="relative flex flex-col items-center gap-3 text-sage">
         <CategoryIcon name={category?.icon} className={iconClass} strokeWidth={1.2} />
-        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cream/50">{category?.short}</span>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-ivory/50">{category?.short}</span>
       </div>
     </div>
   )

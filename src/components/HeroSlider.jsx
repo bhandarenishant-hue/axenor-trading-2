@@ -42,7 +42,7 @@ export default function HeroSlider({ slides, image }) {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-navy text-cream"
+      className="relative isolate overflow-hidden bg-forest text-ivory"
       onMouseEnter={() => (paused.current = true)}
       onMouseLeave={() => (paused.current = false)}
       aria-roledescription="carousel"
@@ -58,8 +58,8 @@ export default function HeroSlider({ slides, image }) {
         animate={{ scale: 1 }}
         transition={{ duration: 1.8, ease }}
       />
-      <div className="absolute inset-0 -z-10 bg-navy/60" />
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(11,31,51,0.92)_0%,rgba(11,31,51,0.7)_45%,rgba(11,31,51,0.25)_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-forest/60" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(54,69,59,0.92)_0%,rgba(54,69,59,0.7)_45%,rgba(54,69,59,0.25)_100%)]" />
 
       <Container className="relative flex min-h-[560px] flex-col justify-center py-20 lg:min-h-[680px] lg:py-28">
         <div className="grid items-center gap-10 lg:grid-cols-12">
@@ -74,8 +74,8 @@ export default function HeroSlider({ slides, image }) {
                 exit="exit"
                 transition={{ duration: 0.65, ease }}
               >
-                <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/60 bg-navy/40 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-light backdrop-blur-sm">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-sage/60 bg-forest/40 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-sage-light backdrop-blur-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sage" />
                   {slide.eyebrow}
                 </p>
                 <h1 className="max-w-2xl text-4xl font-extrabold leading-[1.06] sm:text-5xl lg:text-[3.75rem]">
@@ -83,13 +83,13 @@ export default function HeroSlider({ slides, image }) {
                   {slide.accent && (
                     <>
                       <br />
-                      <span className="text-gold-light">{slide.accent}</span>
+                      <span className="text-sage-light">{slide.accent}</span>
                     </>
                   )}
                 </h1>
-                <p className="mt-6 max-w-lg text-lg leading-relaxed text-cream/80">{slide.text}</p>
+                <p className="mt-6 max-w-lg text-lg leading-relaxed text-ivory/80">{slide.text}</p>
                 <div className="mt-9 flex flex-wrap gap-3">
-                  <Button to={slide.primary.to} variant="gold" size="lg">
+                  <Button to={slide.primary.to} variant="sage" size="lg">
                     {slide.primary.label}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
@@ -98,7 +98,7 @@ export default function HeroSlider({ slides, image }) {
                       to={slide.secondary.to}
                       variant="inverse"
                       size="lg"
-                      className="bg-transparent text-cream ring-1 ring-cream/40 hover:bg-cream hover:text-navy"
+                      className="bg-transparent text-ivory ring-1 ring-ivory/40 hover:bg-ivory hover:text-forest"
                     >
                       {slide.secondary.label}
                     </Button>
@@ -124,7 +124,7 @@ export default function HeroSlider({ slides, image }) {
                 aria-selected={i === index}
                 aria-label={`Slide ${i + 1}`}
                 onClick={() => go(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-10 bg-gold' : 'w-4 bg-cream/35 hover:bg-cream/60'}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-10 bg-sage' : 'w-4 bg-ivory/35 hover:bg-ivory/60'}`}
               />
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function HeroSlider({ slides, image }) {
               type="button"
               onClick={() => go(index - 1)}
               aria-label="Previous slide"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/30 text-ivory transition-colors hover:border-sage hover:bg-sage hover:text-forest"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -141,7 +141,7 @@ export default function HeroSlider({ slides, image }) {
               type="button"
               onClick={() => go(index + 1)}
               aria-label="Next slide"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-ivory/30 text-ivory transition-colors hover:border-sage hover:bg-sage hover:text-forest"
             >
               <ChevronRight className="h-5 w-5" />
             </button>

@@ -70,7 +70,7 @@ function CategoryTile({ category, large = false }) {
   return (
     <Link
       to={`/products?category=${category.slug}`}
-      className={`group relative block overflow-hidden rounded-xl bg-navy ${large ? 'aspect-[4/5] sm:aspect-auto sm:h-full' : 'aspect-[4/3]'}`}
+      className={`group relative block overflow-hidden rounded-xl bg-forest ${large ? 'aspect-[4/5] sm:aspect-auto sm:h-full' : 'aspect-[4/3]'}`}
     >
       {category.image ? (
         <img
@@ -80,18 +80,18 @@ function CategoryTile({ category, large = false }) {
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center text-gold">
+        <div className="absolute inset-0 flex items-center justify-center text-sage">
           <CategoryIcon name={category.icon} className="h-12 w-12" strokeWidth={1.2} />
         </div>
       )}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,31,51,0)_35%,rgba(11,31,51,0.85)_100%)] transition-opacity duration-500 group-hover:opacity-90" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(54,69,59,0)_35%,rgba(54,69,59,0.85)_100%)] transition-opacity duration-500 group-hover:opacity-90" />
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-        <span className="inline-flex items-center gap-2 rounded-full bg-gold px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-navy shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]">
+        <span className="inline-flex items-center gap-2 rounded-full bg-sage px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-forest shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]">
           <CategoryIcon name={category.icon} className="h-3.5 w-3.5" strokeWidth={2} />
           {category.short}
         </span>
-        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-cream sm:text-xl">{category.name}</h3>
-        <p className="mt-1 text-xs text-cream/70">{count} products · View range</p>
+        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-ivory sm:text-xl">{category.name}</h3>
+        <p className="mt-1 text-xs text-ivory/70">{count} products · View range</p>
       </div>
     </Link>
   )
@@ -107,12 +107,12 @@ export default function Home() {
         <Container>
           <Stagger className="grid gap-5 md:grid-cols-3">
             {features.map((f) => (
-              <StaggerItem key={f.title} className="flex gap-5 rounded-xl border border-line bg-white p-7 shadow-[0_24px_50px_-30px_rgba(11,31,51,0.35)]">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy text-gold">
+              <StaggerItem key={f.title} className="flex gap-5 rounded-xl border border-line bg-white p-7 shadow-[0_24px_50px_-30px_rgba(54,69,59,0.35)]">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-forest text-sage">
                   <f.icon className="h-5 w-5" strokeWidth={1.6} />
                 </span>
                 <div>
-                  <h3 className="text-lg font-bold text-navy">{f.title}</h3>
+                  <h3 className="text-lg font-bold text-forest">{f.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-slate">{f.text}</p>
                 </div>
               </StaggerItem>
@@ -125,13 +125,13 @@ export default function Home() {
       <section className="overflow-hidden border-y border-line bg-white py-20 lg:py-28">
         <Container className="grid items-center gap-12 lg:grid-cols-12">
           <SlideIn from="left" className="lg:col-span-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">About {company.name}</p>
-            <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] text-navy sm:text-5xl lg:text-6xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">About {company.name}</p>
+            <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] text-forest sm:text-5xl lg:text-6xl">
               Connecting
               <br />
               Markets.
               <br />
-              <span className="text-gold-dark">Building Trade.</span>
+              <span className="text-sage-dark">Building Trade.</span>
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate">{company.about}</p>
             <p className="mt-4 max-w-lg leading-relaxed text-slate">
@@ -148,8 +148,8 @@ export default function Home() {
               <div className="overflow-hidden rounded-xl">
                 <img src={HERO_IMAGE} alt="Container ship, cargo aircraft and Axenor Trading truck at a port" className="aspect-[4/3] w-full object-cover" loading="lazy" />
               </div>
-              <FadeUp delay={0.35} className="absolute -bottom-6 -left-4 rounded-lg border border-gold/40 bg-navy p-5 text-cream shadow-xl sm:-left-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">Origin</p>
+              <FadeUp delay={0.35} className="absolute -bottom-6 -left-4 rounded-lg border border-sage/40 bg-forest p-5 text-ivory shadow-xl sm:-left-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">Origin</p>
                 <p className="mt-1 font-heading text-2xl font-bold">{company.origin}</p>
               </FadeUp>
             </div>
@@ -179,12 +179,12 @@ export default function Home() {
             <StaggerItem>
               <Link
                 to="/contact"
-                className="flex aspect-[4/3] flex-col justify-between rounded-xl border border-dashed border-gold/60 bg-white p-6 transition-colors hover:bg-cream-dark"
+                className="flex aspect-[4/3] flex-col justify-between rounded-xl border border-dashed border-sage/60 bg-white p-6 transition-colors hover:bg-ivory-dark"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">Not listed?</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Not listed?</p>
                 <div>
-                  <h3 className="font-heading text-lg font-bold leading-snug text-navy">Looking for something else from India?</h3>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-navy">
+                  <h3 className="font-heading text-lg font-bold leading-snug text-forest">Looking for something else from India?</h3>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-forest">
                     Send an inquiry <ArrowRight className="h-4 w-4" />
                   </span>
                 </div>
@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Process */}
-      <section className="bg-navy py-20 text-cream lg:py-28">
+      <section className="bg-forest py-20 text-ivory lg:py-28">
         <Container>
           <FadeUp>
             <SectionHeading
@@ -228,7 +228,7 @@ export default function Home() {
           <div className="relative mt-16">
             <motion.div
               aria-hidden="true"
-              className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-px origin-left bg-gold/50 md:block"
+              className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-px origin-left bg-sage/50 md:block"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, amount: 0.5 }}
@@ -237,14 +237,14 @@ export default function Home() {
             <Stagger gap={0.18} className="grid gap-10 md:grid-cols-3">
               {steps.map((s, i) => (
                 <StaggerItem key={s.title} className="flex flex-col items-center text-center">
-                  <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-gold bg-navy text-gold">
+                  <span className="relative flex h-14 w-14 items-center justify-center rounded-full border border-sage bg-forest text-sage">
                     <s.icon className="h-6 w-6" strokeWidth={1.5} />
-                    <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-gold font-heading text-[11px] font-bold text-navy">
+                    <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-sage font-heading text-[11px] font-bold text-forest">
                       {i + 1}
                     </span>
                   </span>
                   <h3 className="mt-6 text-lg font-bold">{s.title}</h3>
-                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-cream/65">{s.text}</p>
+                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-ivory/65">{s.text}</p>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -255,17 +255,17 @@ export default function Home() {
       {/* CTA band */}
       <section className="relative isolate overflow-hidden py-24 lg:py-32">
         <img src={HERO_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_70%]" loading="lazy" />
-        <div className="absolute inset-0 -z-10 bg-navy/85" />
+        <div className="absolute inset-0 -z-10 bg-forest/85" />
         <Container className="text-center">
           <FadeUp>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">Get in touch</p>
-            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight text-cream sm:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">Get in touch</p>
+            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-tight text-ivory sm:text-5xl">
               Ready to discuss your requirement?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-cream/75">
+            <p className="mx-auto mt-4 max-w-xl text-ivory/75">
               Send us the product, quantity and destination. We will respond with sourcing options and a quotation.
             </p>
-            <Button to="/contact" variant="gold" size="lg" className="mt-9">
+            <Button to="/contact" variant="sage" size="lg" className="mt-9">
               Send Inquiry <ArrowRight className="h-4 w-4" />
             </Button>
           </FadeUp>

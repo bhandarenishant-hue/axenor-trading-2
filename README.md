@@ -56,4 +56,24 @@ or form service when one exists.
 
 ## Design tokens
 
-Colors and fonts are defined in `src/index.css` under `@theme` (navy, gold, cream and supporting shades).
+Colors and fonts are defined in  under . The palette is built from five
+client-supplied colours, with three shades derived so accent text and borders reach a readable contrast.
+
+| Token | Hex | Source | Role |
+| --- | --- | --- | --- |
+|  | #36453b | Dark Slate Grey | Dark sections, footer, headings, primary buttons |
+|  | #515751 | Ebony | Raised surfaces on dark, button hover |
+|  | #c2c1a5 | Dry Sage | Accent: icons, rules, category pills, accent button |
+|  | #d7d6c2 | derived | Accent text on dark backgrounds |
+|  | #6f6a4a | derived | Accent text on light backgrounds |
+|  | #f5f9e9 | Ivory | Page background |
+|  | #e9eed7 | derived | Subtle alternate surface |
+|  | #dbdac4 | derived | Borders and dividers |
+|  | #596869 | Dim Grey | Secondary body text |
+
+Card surfaces use plain white to lift off the ivory page. Every text pairing meets WCAG AA, the
+tightest being sage-dark on ivory at 5.1:1.
+
+Note: the logo files in  come from the client's identity board and still carry the
+original navy and gold brand colours, so they do not match this palette. Replace them with sage
+versions if the brand identity is being changed too.
