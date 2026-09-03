@@ -43,6 +43,20 @@ export const categories = [
   },
 ]
 
+// Optional second level. A category may hold subcategories; a product may name one
+// via its `subcategory` field. Products without a subcategory sit directly in the category.
+export const subcategories = [
+  {
+    slug: 'sarees',
+    category: 'textiles',
+    name: 'Sarees',
+    short: 'Sarees',
+    image: '/images/subcategories/sarees.jpg',
+    description:
+      'Regional Indian saree weaves in silk, cotton and blends, from Banarasi zari brocade to Sambalpuri ikat.',
+  },
+]
+
 export const products = [
   // ── Textiles & Indian Fashion ──────────────────────────────────────────
   {
@@ -58,18 +72,121 @@ export const products = [
     specs: { Material: 'Cotton', Sizes: 'Single / Double / King', Finish: 'Plain, printed, jacquard', Packaging: 'Customisable' },
     image: '/images/products/cotton-bedsheet-sets.jpg',
   },
+  // ── Sarees (subcategory of Textiles) ──────────────────────────────────
+  // Photography note: the images below are generic royalty-free saree photos.
+  // They are NOT verified as depicting the specific weave they sit against, so
+  // replace them with real product shots before the site goes live.
   {
-    id: 2,
-    slug: 'handloom-sarees',
-    name: 'Handloom Sarees',
+    id: 20,
+    slug: 'banarasi-silk-saree',
+    name: 'Banarasi Silk Saree',
     category: 'textiles',
+    subcategory: 'sarees',
     featured: true,
-    summary: 'Traditional Indian sarees in cotton and silk blends across regional weaving styles.',
+    summary: 'Varanasi silk sarees woven with gold and silver zari brocade.',
     description:
-      'Sarees in cotton, silk and blended fabrics, drawing on regional Indian weaving traditions. Assortments can be curated by fabric, colour palette or occasion to suit retail and wholesale buyers.',
-    highlights: ['Cotton, silk and blended fabrics', 'Curated assortments by style or occasion', 'Retail-ready packing available'],
-    specs: { Material: 'Cotton / Silk / Blends', Length: 'Standard saree length', Assortment: 'Curated on request', Packaging: 'Individual packing' },
-    image: '/images/products/handloom-sarees.jpg',
+      'Silk sarees woven in and around Varanasi, Uttar Pradesh, using gold and silver zari to build brocade patterns. Motifs draw on Mughal-influenced florals, vines and figured borders. Offered in pure silk and silk-blend grades.',
+    highlights: ['Woven in the Varanasi cluster', 'Gold and silver zari brocade', 'Pure silk and blended grades'],
+    specs: { Material: 'Silk with zari', Weave: 'Brocade', Region: 'Varanasi, Uttar Pradesh', Packaging: 'Individual box or poly pack' },
+    image: '/images/products/saree-banarasi.jpg',
+  },
+  {
+    id: 21,
+    slug: 'kanjivaram-silk-saree',
+    name: 'Kanjivaram Silk Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Heavy mulberry silk sarees from Tamil Nadu with contrast interlocked borders.',
+    description:
+      'Mulberry silk sarees woven in Kanchipuram, Tamil Nadu. The body and border are typically woven separately and interlocked, giving the contrast border the weave is known for. Common motifs include temple borders, checks and stripes.',
+    highlights: ['Mulberry silk in heavier weights', 'Contrast interlocked borders', 'Temple, check and stripe motifs'],
+    specs: { Material: 'Mulberry silk with zari', Weave: 'Interlocked border', Region: 'Kanchipuram, Tamil Nadu', Packaging: 'Individual box or poly pack' },
+    image: '/images/products/saree-kanjivaram.jpg',
+  },
+  {
+    id: 22,
+    slug: 'chanderi-saree',
+    name: 'Chanderi Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Lightweight sheer sarees in silk-cotton from Madhya Pradesh.',
+    description:
+      'Sarees woven in Chanderi, Madhya Pradesh, in silk, cotton and silk-cotton blends. The cloth is light and semi-sheer with a soft sheen, usually carrying small scattered buti motifs across the body.',
+    highlights: ['Light, semi-sheer handle', 'Silk, cotton and blended options', 'Scattered buti motifs'],
+    specs: { Material: 'Silk / Cotton / Silk-cotton', Weave: 'Plain with buti motifs', Region: 'Chanderi, Madhya Pradesh', Packaging: 'Individual poly pack' },
+    image: '/images/products/saree-chanderi.jpg',
+  },
+  {
+    id: 23,
+    slug: 'bandhani-saree',
+    name: 'Bandhani Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Tie-and-dye sarees from Gujarat and Rajasthan patterned in fine dots.',
+    description:
+      'Sarees patterned by the bandhani tie-and-dye method, in which the cloth is tied at many small points before dyeing so those points resist the colour. The result is a field of fine dots forming geometric and floral arrangements.',
+    highlights: ['Traditional tie-and-dye process', 'Dot-formed geometric and floral patterns', 'Cotton, georgette and silk bases'],
+    specs: { Material: 'Cotton / Georgette / Silk', Technique: 'Bandhani tie-and-dye', Region: 'Gujarat and Rajasthan', Packaging: 'Individual poly pack' },
+    image: '/images/products/saree-bandhani.jpg',
+  },
+  {
+    id: 24,
+    slug: 'paithani-saree',
+    name: 'Paithani Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Silk sarees from Maharashtra with zari borders and figured pallu.',
+    description:
+      'Silk sarees associated with Paithan in Maharashtra, woven with zari borders and a figured pallu. Peacock and lotus motifs are characteristic, and borders often carry an oblique square pattern.',
+    highlights: ['Zari borders and figured pallu', 'Peacock and lotus motifs', 'Silk in festive weights'],
+    specs: { Material: 'Silk with zari', Weave: 'Tapestry-style pallu', Region: 'Paithan, Maharashtra', Packaging: 'Individual box' },
+    image: '/images/products/saree-paithani.jpg',
+  },
+  {
+    id: 25,
+    slug: 'sambalpuri-ikat-saree',
+    name: 'Sambalpuri Ikat Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Odisha sarees patterned by tie-dyeing the yarn before weaving.',
+    description:
+      'Sarees from western Odisha made by the bandha or ikat method, where warp and weft yarns are tie-dyed before weaving. Because the pattern is dyed into the yarn, motifs carry the soft feathered edge typical of ikat.',
+    highlights: ['Yarn tie-dyed before weaving', 'Feathered-edge ikat motifs', 'Cotton and silk versions'],
+    specs: { Material: 'Cotton / Silk', Technique: 'Bandha (ikat)', Region: 'Sambalpur, Odisha', Packaging: 'Individual poly pack' },
+    image: '/images/products/saree-sambalpuri.jpg',
+  },
+  {
+    id: 26,
+    slug: 'tussar-silk-saree',
+    name: 'Tussar Silk Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Textured wild silk sarees with a natural golden tone.',
+    description:
+      'Sarees in tussar, a wild silk produced in the forest belts of Jharkhand, Bihar, West Bengal and Odisha. The yarn gives a coarser, textured surface and a natural pale-gold colour that takes dyes and hand-painting well.',
+    highlights: ['Textured wild silk yarn', 'Natural pale-gold base colour', 'Suits printing and hand-painting'],
+    specs: { Material: 'Tussar silk', Weave: 'Plain and dobby', Region: 'Jharkhand, Bihar, West Bengal, Odisha', Packaging: 'Individual poly pack' },
+    image: '/images/products/saree-tussar.jpg',
+  },
+  {
+    id: 27,
+    slug: 'cotton-handloom-saree',
+    name: 'Cotton Handloom Saree',
+    category: 'textiles',
+    subcategory: 'sarees',
+    featured: false,
+    summary: 'Everyday handloom cotton sarees suited to warm climates.',
+    description:
+      'Plain and striped handloom cotton sarees from weaving clusters across India. Breathable and hard-wearing, these suit everyday retail volumes, with counts, borders and colour ranges set to buyer requirement.',
+    highlights: ['Breathable everyday cotton', 'Plain, striped and checked options', 'Counts and borders to order'],
+    specs: { Material: 'Handloom cotton', Weave: 'Plain, stripe, check', Region: 'Multiple Indian clusters', Packaging: 'Individual poly pack' },
+    image: '/images/products/saree-cotton-handloom.jpg',
   },
   {
     id: 3,
@@ -303,6 +420,9 @@ export const products = [
 ]
 
 export const getCategory = (slug) => categories.find((c) => c.slug === slug)
+export const getSubcategory = (slug) => subcategories.find((s) => s.slug === slug)
+export const getSubcategoriesByCategory = (slug) => subcategories.filter((s) => s.category === slug)
+export const getProductsBySubcategory = (slug) => products.filter((p) => p.subcategory === slug)
 export const getProduct = (slug) => products.find((p) => p.slug === slug)
 export const getProductsByCategory = (slug) => products.filter((p) => p.category === slug)
 export const featuredProducts = products.filter((p) => p.featured)

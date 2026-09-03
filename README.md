@@ -19,8 +19,31 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
 - `src/data/company.js` — company name, tagline, about text, contact details (including a WhatsApp
   number for the floating button), social links, markets. Fields set to `null` or `[]` are hidden in
   the UI until filled in. Nothing is invented.
-- `src/data/products.js` — categories and products. Each entry has an `image` path under
-  `public/images/`; set it to `null` to fall back to the branded placeholder graphic.
+- `src/data/products.js` — categories, subcategories and products. Each entry has an `image` path
+  under `public/images/`; set it to `null` to fall back to the branded placeholder graphic.
+
+### Catalog hierarchy
+
+The catalog is two levels deep, and the second level is optional:
+
+```
+Category            Textiles & Indian Fashion
+├─ Subcategory      Sarees            → 8 saree types
+└─ Products         Cotton Bedsheet Sets, Ethnic Wear, Cotton T-Shirts, Terry Towels
+```
+
+A product sits directly in its category unless it names a `subcategory`. To add a new group, push an
+entry onto `subcategories` with its parent `category`, then set that `subcategory` slug on each
+product belonging to it. Nothing else needs changing: the catalog page, breadcrumbs, card labels and
+related-product lists all read from the data.
+
+Views are addressed by query string, so any level is linkable:
+
+| URL | Shows |
+| --- | --- |
+| `/products` | Every product, flat, plus a "Grouped ranges" panel |
+| `/products?category=textiles` | Subcategory tiles, then products not in a subcategory |
+| `/products?category=textiles&sub=sarees` | The eight saree types |
 
 ## Assets
 

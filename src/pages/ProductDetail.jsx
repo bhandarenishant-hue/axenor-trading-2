@@ -5,7 +5,7 @@ import Button from '../components/Button'
 import ProductImage from '../components/ProductImage'
 import ProductCard from '../components/ProductCard'
 import Reveal from '../components/Reveal'
-import { getCategory, getProduct, getProductsByCategory } from '../data/products'
+import { getCategory, getProduct, getProductsByCategory, getProductsBySubcategory, getSubcategory } from '../data/products'
 
 export default function ProductDetail() {
   const { slug } = useParams()
@@ -13,7 +13,14 @@ export default function ProductDetail() {
   if (!product) return <Navigate to="/404" replace />
 
   const category = getCategory(product.category)
-  const related = getProductsByCategory(product.category).filter((p) => p.slug !== product.slug).slice(0, 3)
+  const subcategory = product.subcategory ? getSubcategory(product.subcategory) : null
+  // Siblings come from the narrowest group the product belongs to.
+  const siblings = subcategory ? getProductsBySubcategory(subcategory.slug) : getProductsByCategory(product.category)
+  const related = siblings.filter((p) => p.slug !== product.slug).slice(0, 3)
+  const groupName = subcategory?.short ?? category.short
+  const groupHref = subcategory
+    ? `/products?category=${category.slug}&sub=${subcategory.slug}`
+    : `/products?category=${category.slug}`
 
   return (
     <>
@@ -23,6 +30,12 @@ export default function ProductDetail() {
             <Link to="/products" className="hover:text-forest">Products</Link>
             <ChevronRight className="h-3.5 w-3.5" />
             <Link to={`/products?category=${category.slug}`} className="hover:text-forest">{category.short}</Link>
+            {subcategory && (
+              <>
+                <ChevronRight className="h-3.5 w-3.5" />
+                <Link to={groupHref} className="hover:text-forest">{subcategory.name}</Link>
+              </>
+            )}
             <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-forest">{product.name}</span>
           </nav>
@@ -38,7 +51,9 @@ export default function ProductDetail() {
           </Reveal>
 
           <Reveal delay={100} className="lg:col-span-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">{category.name}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">
+              {subcategory ? `${category.short} · ${subcategory.name}` : category.name}
+            </p>
             <h1 className="mt-3 text-4xl font-extrabold leading-tight text-forest sm:text-5xl">{product.name}</h1>
             <p className="mt-5 text-lg leading-relaxed text-slate">{product.description}</p>
 
@@ -93,8 +108,8 @@ export default function ProductDetail() {
         <section className="py-20">
           <Container>
             <div className="flex items-end justify-between">
-              <h2 className="text-2xl font-bold text-forest sm:text-3xl">More in {category.short}</h2>
-              <Link to={`/products?category=${category.slug}`} className="hidden items-center gap-1.5 text-sm font-medium text-forest hover:text-sage-dark sm:inline-flex">
+              <h2 className="text-2xl font-bold text-forest sm:text-3xl">More in {groupName}</h2>
+              <Link to={groupHref} className="hidden items-center gap-1.5 text-sm font-medium text-forest hover:text-sage-dark sm:inline-flex">
                 View all <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
