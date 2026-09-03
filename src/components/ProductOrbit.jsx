@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { featuredProducts, getCategory } from '../data/products'
-import CargoContainer from './CargoContainer'
+import { featuredProducts } from '../data/products'
 
-// Circular product images orbiting anticlockwise around the brand icon.
-// The ring rotates one way and each item counter-rotates so photos stay upright.
+// Circular product images orbiting anticlockwise around the brand mark.
+// The ring rotates one way and each item counter-rotates so photos and
+// labels stay upright as they travel.
 export default function ProductOrbit({ items = featuredProducts.slice(0, 6), duration = 48 }) {
   const step = 360 / items.length
   return (
@@ -12,9 +12,9 @@ export default function ProductOrbit({ items = featuredProducts.slice(0, 6), dur
       <div className="absolute inset-0 rounded-full border border-dashed border-gold/40" />
       <div className="absolute inset-[22%] rounded-full border border-cream/10" />
 
-      {/* Centre: tilted cargo container carrying the site logo */}
-      <div className="absolute left-1/2 top-1/2 w-[58%] -translate-x-1/2 -translate-y-1/2 -rotate-6 drop-shadow-[0_24px_30px_rgba(0,0,0,0.6)]">
-        <CargoContainer className="w-full" />
+      {/* Centre brand mark */}
+      <div className="absolute left-1/2 top-1/2 flex h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] ring-8 ring-navy/60">
+        <img src="/brand/icon.png" alt="" aria-hidden="true" className="w-[62%]" />
       </div>
 
       {/* Rotating ring */}
@@ -38,8 +38,8 @@ export default function ProductOrbit({ items = featuredProducts.slice(0, 6), dur
                   <span className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-widest text-gold">{p.name}</span>
                 )}
               </Link>
-              <span className="mt-2 whitespace-nowrap rounded-full border border-gold/50 bg-navy/80 px-3 py-1 font-heading text-[11px] font-bold tracking-wide text-cream shadow-md backdrop-blur-sm sm:text-xs">
-                {getCategory(p.category)?.short ?? p.name}
+              <span className="mt-1.5 whitespace-nowrap rounded-full border border-gold/50 bg-navy/85 px-2 py-0.5 font-heading text-[9px] font-bold tracking-wide text-cream shadow-md backdrop-blur-sm sm:mt-2 sm:px-3 sm:py-1 sm:text-[11px] lg:text-xs">
+                {p.name}
               </span>
             </div>
           </div>
