@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { featuredProducts } from '../data/products'
+import { featuredProducts, getCategory } from '../data/products'
 
 // Circular product images orbiting anticlockwise around the brand mark.
 // The ring rotates one way and each item counter-rotates so photos and
@@ -38,8 +38,8 @@ export default function ProductOrbit({ items = featuredProducts.slice(0, 6), dur
                   <span className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-widest text-gold">{p.name}</span>
                 )}
               </Link>
-              <span className="mt-1.5 whitespace-nowrap rounded-full border border-gold/50 bg-navy/85 px-2 py-0.5 font-heading text-[9px] font-bold tracking-wide text-cream shadow-md backdrop-blur-sm sm:mt-2 sm:px-3 sm:py-1 sm:text-[11px] lg:text-xs">
-                {p.name}
+              <span className="mt-1.5 whitespace-nowrap rounded-full border border-gold/50 bg-navy/85 px-2.5 py-0.5 font-heading text-[10px] font-bold tracking-wide text-cream shadow-md backdrop-blur-sm sm:mt-2 sm:px-3 sm:py-1 sm:text-[11px] lg:text-xs">
+                {getCategory(p.category)?.short ?? p.name}
               </span>
             </div>
           </div>
