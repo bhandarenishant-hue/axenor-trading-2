@@ -29,8 +29,10 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
   under `public/images/`; set it to `null` to fall back to the branded placeholder graphic.
 
 The five product categories are Textiles, Garments, Consumer Goods, Home Accessories and
-Electronics. Electronics carries no catalogued lines yet, so its category is flagged and the UI shows a sourcing prompt instead of a product count. Products that fall outside these five
-categories live in  rather than being deleted.
+Electronics. Electronics carries no catalogued lines yet, so its category is flagged `enquiryOnly`
+and the UI shows a sourcing prompt in place of a product count. Products that fall outside these
+five categories live in `archivedProducts` rather than being deleted, so any of them can be restored
+by moving the entry back into `products` with a current category slug.
 
 ### Catalog hierarchy
 
