@@ -5,7 +5,7 @@ import { useReducedMotion } from 'motion/react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import ProductCard from './ProductCard'
 
-const AUTOPLAY_DELAY = 3500
+const AUTOPLAY_DELAY = 2500
 
 export default function ProductCarousel({ products }) {
   const reduce = useReducedMotion()
@@ -28,8 +28,9 @@ export default function ProductCarousel({ products }) {
 
   const [emblaRef, embla] = useEmblaCarousel(
     // `duration` is Embla's tween scalar, not milliseconds. Measured in the
-    // browser, 16 lands around 650ms, which reads as premium without dragging.
-    { align: 'start', loop: true, duration: 16, skipSnaps: false },
+    // browser, 8 lands around 400ms: quick enough to feel responsive while
+    // still gliding rather than snapping.
+    { align: 'start', loop: true, duration: 8, skipSnaps: false },
     [autoplay],
   )
   const [, setTick] = useState(0)
