@@ -7,12 +7,14 @@ export const company = {
   legalName: 'Axenor Trading Sdn. Bhd.',
   tagline: 'Connecting Markets. Building Trade.',
   about:
-    'India-based B2B trading company focused on sourcing and supplying quality Indian products to international markets.',
+    'Malaysia-based B2B trading company sourcing quality Indian products for international markets.',
 
-  // The origin shown on the site as the source of the products.
-  // NOTE: this is the sourcing origin, not the country of incorporation,
-  // which is Malaysia. See `registration` below.
-  origin: 'India',
+  // Two separate facts, kept apart so they cannot be confused:
+  //   basedIn        — where the company is registered and operates, matching
+  //                    the country of incorporation in `registration` below
+  //   sourcingOrigin — where the products themselves come from
+  basedIn: 'Malaysia',
+  sourcingOrigin: 'India',
 
   // Taken from the SSM (Companies Commission of Malaysia) corporate information
   // extract supplied by the client. These are public-record facts; do not edit

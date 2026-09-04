@@ -1,4 +1,4 @@
 @echo off
 set "PATH=C:\Program Files\nodejs;%PATH%"
-cd /d C:\Users\dell\website
+cd /d "%~dp0.."
 npm run dev -- --port 5173 --strictPort

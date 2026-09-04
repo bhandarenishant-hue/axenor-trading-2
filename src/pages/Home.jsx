@@ -16,7 +16,7 @@ const HERO_IMAGE = '/images/hero.jpg'
 
 const slides = [
   {
-    eyebrow: `Export-oriented B2B trading · ${company.origin}`,
+    eyebrow: `Export-oriented B2B trading · ${company.basedIn}`,
     title: 'Connecting Markets.',
     accent: 'Building Trade.',
     text: company.about,
@@ -149,8 +149,8 @@ export default function Home() {
                 <img src={HERO_IMAGE} alt="Container ship, cargo aircraft and Axenor Trading truck at a port" className="aspect-[4/3] w-full object-cover" loading="lazy" />
               </div>
               <FadeUp delay={0.35} className="absolute -bottom-6 -left-4 rounded-lg border border-sage/40 bg-forest p-5 text-ivory shadow-xl sm:-left-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">Origin</p>
-                <p className="mt-1 font-heading text-2xl font-bold">{company.origin}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">Sourcing origin</p>
+                <p className="mt-1 font-heading text-2xl font-bold">{company.sourcingOrigin}</p>
               </FadeUp>
             </div>
           </SlideIn>
