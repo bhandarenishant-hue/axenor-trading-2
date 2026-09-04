@@ -28,11 +28,26 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
 - `src/data/products.js` — categories, subcategories and products. Each entry has an `image` path
   under `public/images/`; set it to `null` to fall back to the branded placeholder graphic.
 
-The five product categories are Textiles, Garments, Consumer Goods, Home Accessories and
-Electronics. Electronics carries no catalogued lines yet, so its category is flagged `enquiryOnly`
-and the UI shows a sourcing prompt in place of a product count. Products that fall outside these
-five categories live in `archivedProducts` rather than being deleted, so any of them can be restored
-by moving the entry back into `products` with a current category slug.
+Seven product categories: Textiles, Garments, Consumer Goods, Home Accessories, Consumer Electronics
+& Smart Accessories, Industrial Fine & Specialty Chemicals, and Lighting Smart Decor & Household.
+Products that fall outside them live in `archivedProducts` rather than being deleted, so any can be
+restored by moving the entry back into `products` with a current category slug.
+
+### Sourcing origin
+
+Every product carries `sourceCountry` and `sourceLabel`, declared once in the `sources` export. The
+catalog filters on origin and category independently, so `?source=china&category=electronics` narrows
+to both. Cards show the origin as a small badge on the photo. Country codes are used rather than flag
+emoji, which Windows renders as plain letter pairs.
+
+| Origin | Products |
+| --- | --- |
+| India | 22 |
+| China | 12 |
+
+Five products deliberately keep the branded placeholder instead of a photo: the four chemical lines
+and the food choppers, where no accurate unbranded stock image was found and a stand-in would
+misrepresent the product.
 
 ### Catalog hierarchy
 
