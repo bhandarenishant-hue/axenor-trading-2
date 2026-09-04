@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight,
@@ -23,7 +24,7 @@ import { motion } from 'motion/react'
 import { FadeUp, SlideIn, Stagger, StaggerItem } from '../components/motion'
 import { ease } from '../lib/animation'
 import { company } from '../data/company'
-import { categories, featuredProducts, products } from '../data/products'
+import { categories, products, sources } from '../data/products'
 
 const HERO_IMAGE = '/images/hero.jpg'
 
@@ -92,6 +93,14 @@ const steps = [
 
 const customerIcons = [Store, MonitorSmartphone, Building2]
 
+// Matches the origin chips on the catalog page so the two read as one system.
+const carouselChip = (isActive) =>
+  `rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+    isActive
+      ? 'border-forest bg-forest text-ivory'
+      : 'border-line bg-white text-slate hover:border-forest hover:text-forest'
+  }`
+
 function CategoryTile({ category, large = false }) {
   const count = products.filter((p) => p.category === category.slug).length
   return (
@@ -127,6 +136,13 @@ function CategoryTile({ category, large = false }) {
 }
 
 export default function Home() {
+  // '' shows every origin; otherwise a source slug from the data file.
+  const [origin, setOrigin] = useState('')
+  const activeSource = sources.find((s) => s.slug === origin)
+  const carouselProducts = activeSource
+    ? products.filter((p) => p.sourceCountry === activeSource.country)
+    : products
+
   return (
     <>
       <HeroSlider slides={slides} image={HERO_IMAGE} />
@@ -215,12 +231,12 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Featured products */}
+      {/* Catalogue carousel */}
       <section className="border-y border-line bg-white py-20 lg:py-24">
         <Container>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <FadeUp>
-              <SectionHeading eyebrow="From the Catalogue" title="A selection of what we source." />
+              <SectionHeading eyebrow="From the Catalogue" title="Products we source and import." />
             </FadeUp>
             <FadeUp delay={0.1}>
               <Button to="/products" variant="ghost" className="px-0">
@@ -228,8 +244,41 @@ export default function Home() {
               </Button>
             </FadeUp>
           </div>
-          <FadeUp delay={0.15} className="mt-12">
-            <ProductCarousel products={featuredProducts} />
+
+          <FadeUp delay={0.12} className="mt-8">
+            <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter carousel by sourcing origin">
+              <button
+                type="button"
+                onClick={() => setOrigin('')}
+                aria-pressed={!origin}
+                className={carouselChip(!origin)}
+              >
+                All Products
+              </button>
+              {sources.map((s) => (
+                <button
+                  key={s.slug}
+                  type="button"
+                  onClick={() => setOrigin(s.slug)}
+                  aria-pressed={origin === s.slug}
+                  className={`${carouselChip(origin === s.slug)} inline-flex items-center gap-2`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`text-[10px] font-bold tracking-[0.08em] ${origin === s.slug ? 'text-sage-light' : 'text-sage-dark'}`}
+                  >
+                    {s.code}
+                  </span>
+                  {s.filterLabel}
+                </button>
+              ))}
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.15} className="mt-8">
+            {/* Remounting on filter change resets the position and the autoplay
+                timer in one step, so no stale interval can survive. */}
+            <ProductCarousel key={origin || 'all'} products={carouselProducts} />
           </FadeUp>
         </Container>
       </section>
