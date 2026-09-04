@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Search, X } from 'lucide-react'
 import Container from '../components/Container'
+import Button from '../components/Button'
 import ProductCard from '../components/ProductCard'
 import Reveal from '../components/Reveal'
 import CategoryIcon from '../components/CategoryIcon'
@@ -87,7 +88,7 @@ export default function Products() {
     ? activeSub.description
     : activeCategory
       ? activeCategory.description
-      : 'Browse our product lines sourced from India. Open any product to view details and send an inquiry.'
+      : 'Product lines we source from international suppliers and import for the Malaysian market. Open any product to view details and send an inquiry.'
 
   const chip = (isActive) =>
     `rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
@@ -189,18 +190,20 @@ export default function Products() {
             </div>
           )}
 
-          <p className={`text-sm text-slate ${showTiles ? 'mt-12' : 'mt-8'}`} aria-live="polite">
-            {showTiles && filtered.length > 0 && (
-              <span className="mr-1 text-forest">Also in {activeCategory?.short}:</span>
-            )}
-            {filtered.length} {filtered.length === 1 ? 'product' : 'products'}
-            {query && (
-              <>
-                {' '}
-                for “<span className="text-forest">{query}</span>”
-              </>
-            )}
-          </p>
+          {/* With tiles showing, a zero count means every product sits in a group,
+              so the count line would just read "0 products" out of context. */}
+          {!(showTiles && filtered.length === 0) && (
+            <p className={`text-sm text-slate ${showTiles ? 'mt-12' : 'mt-8'}`} aria-live="polite">
+              {showTiles && <span className="mr-1 text-forest">Also in {activeCategory?.short}:</span>}
+              {filtered.length} {filtered.length === 1 ? 'product' : 'products'}
+              {query && (
+                <>
+                  {' '}
+                  for “<span className="text-forest">{query}</span>”
+                </>
+              )}
+            </p>
+          )}
 
           {filtered.length > 0 ? (
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -213,19 +216,46 @@ export default function Products() {
           ) : (
             !showTiles && (
               <div className="mt-6 rounded-lg border border-dashed border-line bg-white p-12 text-center">
-                <h2 className="text-lg font-bold text-forest">No products match your search.</h2>
-                <p className="mt-2 text-sm text-slate">
-                  Try a different term, clear the filters, or send an inquiry describing what you need.
-                </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setParams({}, { replace: true })}
-                    className="rounded-md border border-forest/25 px-5 py-2.5 text-sm font-medium text-forest hover:bg-forest hover:text-ivory"
-                  >
-                    Clear filters
-                  </button>
-                </div>
+                {/* A category with nothing catalogued yet is not a failed search. */}
+                {activeCategory && !searching ? (
+                  <>
+                    <h2 className="text-lg font-bold text-forest">
+                      We source {activeCategory.name.toLowerCase()} to order.
+                    </h2>
+                    <p className="mx-auto mt-2 max-w-md text-sm text-slate">
+                      This range is not catalogued yet. Tell us the specification, quantity and timeline, and we will
+                      come back with sourcing options.
+                    </p>
+                    <div className="mt-6 flex flex-wrap justify-center gap-3">
+                      <Button to="/contact" variant="primary">
+                        Discuss your sourcing needs <ArrowRight className="h-4 w-4" />
+                      </Button>
+                      <button
+                        type="button"
+                        onClick={() => setParams({}, { replace: true })}
+                        className="rounded-md border border-forest/25 px-5 py-2.5 text-sm font-medium text-forest hover:bg-forest hover:text-ivory"
+                      >
+                        View all products
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="text-lg font-bold text-forest">No products match your search.</h2>
+                    <p className="mt-2 text-sm text-slate">
+                      Try a different term, clear the filters, or send an inquiry describing what you need.
+                    </p>
+                    <div className="mt-6 flex flex-wrap justify-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setParams({}, { replace: true })}
+                        className="rounded-md border border-forest/25 px-5 py-2.5 text-sm font-medium text-forest hover:bg-forest hover:text-ivory"
+                      >
+                        Clear filters
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             )
           )}

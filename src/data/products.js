@@ -3,43 +3,45 @@
 export const categories = [
   {
     slug: 'textiles',
-    name: 'Textiles & Indian Fashion',
+    name: 'Textiles',
     short: 'Textiles',
-    icon: 'Shirt',
+    icon: 'Layers',
     image: '/images/categories/textiles.jpg',
-    description: 'Bedsheets, sarees, ethnic wear, T-shirts and towels sourced from Indian textile clusters.',
+    description: 'Woven and handloom textiles sourced from established mills and weaving clusters across Asia.',
   },
   {
-    slug: 'ayurvedic',
-    name: 'Ayurvedic & Personal Care',
-    short: 'Personal Care',
-    icon: 'Leaf',
-    image: '/images/categories/ayurvedic.jpg',
-    description: 'Natural soaps, herbal hair oils and face packs made with traditional Indian ingredients.',
+    slug: 'garments',
+    name: 'Garments',
+    short: 'Garments',
+    icon: 'Shirt',
+    image: '/images/categories/garments.jpg',
+    description: 'Ready-to-wear apparel sourced for retail and private-label programmes.',
   },
   {
-    slug: 'engineering',
-    name: 'Engineering & Hardware',
-    short: 'Hardware',
-    icon: 'Wrench',
-    image: '/images/categories/engineering.jpg',
-    description: 'Fasteners, valves, electrical fittings and brass hardware for industrial and commercial use.',
+    slug: 'consumer-goods',
+    name: 'Consumer Goods',
+    short: 'Consumer Goods',
+    icon: 'ShoppingBasket',
+    image: '/images/categories/consumer-goods.jpg',
+    description: 'Everyday retail lines spanning personal care, packaged food and household staples.',
   },
   {
-    slug: 'spices',
-    name: 'Spices & Pulses',
-    short: 'Spices & Pulses',
-    icon: 'Wheat',
-    image: '/images/categories/spices.jpg',
-    description: "Turmeric, chillies, lentils and rice from India's agricultural regions.",
+    slug: 'home-accessories',
+    name: 'Home Accessories',
+    short: 'Home',
+    icon: 'Lamp',
+    image: '/images/categories/home-accessories.jpg',
+    description: 'Home textiles and fittings for retailers and interior suppliers.',
   },
   {
-    slug: 'snacks',
-    name: 'Pre-packaged Snacks',
-    short: 'Snacks',
-    icon: 'Cookie',
-    image: '/images/categories/snacks.jpg',
-    description: 'Indian snacks and biscuits in retail-ready packaging.',
+    slug: 'electronics',
+    name: 'Electronics',
+    short: 'Electronics',
+    icon: 'Cpu',
+    image: '/images/categories/electronics.jpg',
+    description: 'Consumer and accessory electronics. Ranges are sourced to order, so tell us what you need.',
+    // No catalogued lines yet: the UI shows an enquiry prompt instead of a count.
+    enquiryOnly: true,
   },
 ]
 
@@ -58,12 +60,12 @@ export const subcategories = [
 ]
 
 export const products = [
-  // ── Textiles & Indian Fashion ──────────────────────────────────────────
+  // ── Home textiles and accessories ─────────────────────────────────────
   {
     id: 1,
     slug: 'cotton-bedsheet-sets',
     name: 'Cotton Bedsheet Sets',
-    category: 'textiles',
+    category: 'home-accessories',
     featured: true,
     summary: 'Woven cotton bedsheets with matching pillow covers in a range of sizes and prints.',
     description:
@@ -192,8 +194,8 @@ export const products = [
     id: 3,
     slug: 'ethnic-wear',
     name: 'Ethnic Wear',
-    category: 'textiles',
-    featured: false,
+    category: 'garments',
+    featured: true,
     summary: 'Kurtas, kurta sets and traditional Indian garments for men and women.',
     description:
       'Ready-to-wear Indian ethnic garments including kurtas, kurta sets and festive wear. Available in standard size ranges with options for fabric, print and embroidery detail.',
@@ -205,7 +207,7 @@ export const products = [
     id: 4,
     slug: 'cotton-t-shirts',
     name: 'Cotton T-Shirts',
-    category: 'textiles',
+    category: 'garments',
     featured: false,
     summary: 'Plain and printed cotton T-shirts suitable for retail and private label.',
     description:
@@ -218,7 +220,7 @@ export const products = [
     id: 5,
     slug: 'terry-towels',
     name: 'Terry Towels',
-    category: 'textiles',
+    category: 'home-accessories',
     featured: false,
     summary: 'Cotton terry bath, hand and face towels in solid colours and stripes.',
     description:
@@ -228,12 +230,12 @@ export const products = [
     image: '/images/products/terry-towels.jpg',
   },
 
-  // ── Ayurvedic & Personal Care ──────────────────────────────────────────
+  // ── Personal care ─────────────────────────────────────────────────────
   {
     id: 6,
     slug: 'natural-handmade-soaps',
     name: 'Natural Handmade Soaps',
-    category: 'ayurvedic',
+    category: 'consumer-goods',
     featured: true,
     summary: 'Handmade soap bars using plant-based oils and traditional botanical ingredients.',
     description:
@@ -246,7 +248,7 @@ export const products = [
     id: 7,
     slug: 'herbal-hair-oils',
     name: 'Herbal Hair Oils',
-    category: 'ayurvedic',
+    category: 'consumer-goods',
     featured: false,
     summary: 'Hair oils blended with herbs traditionally used in Indian hair care.',
     description:
@@ -259,7 +261,7 @@ export const products = [
     id: 8,
     slug: 'herbal-face-packs',
     name: 'Herbal Face Packs',
-    category: 'ayurvedic',
+    category: 'consumer-goods',
     featured: false,
     summary: 'Powder and paste face packs made from clays, herbs and botanicals.',
     description:
@@ -269,7 +271,108 @@ export const products = [
     image: '/images/products/herbal-face-packs.jpg',
   },
 
-  // ── Engineering & Hardware ─────────────────────────────────────────────
+  {
+    id: 13,
+    slug: 'brass-hardware',
+    name: 'Brass Hardware',
+    category: 'home-accessories',
+    featured: true,
+    summary: 'Brass hinges, handles, knobs and fittings for doors, furniture and decor.',
+    description:
+      'Brass hardware including hinges, handles, knobs, latches and decorative fittings, sourced from established brass-working clusters in India. Finishes include polished, antique and lacquered.',
+    highlights: ['Hinges, handles, knobs and latches', 'Polished, antique and lacquered finishes', 'Furniture and architectural use'],
+    specs: { Material: 'Brass', Types: 'Hinges, handles, knobs, latches, fittings', Finish: 'Polished / Antique / Lacquered', Packaging: 'Individual or bulk' },
+    image: '/images/products/brass-hardware.jpg',
+  },
+
+  // ── Packaged food ─────────────────────────────────────────────────────
+  {
+    id: 14,
+    slug: 'turmeric',
+    name: 'Turmeric',
+    category: 'consumer-goods',
+    featured: true,
+    summary: 'Turmeric fingers and ground turmeric powder.',
+    description:
+      'Turmeric supplied as whole fingers or ground powder. Grade, curcumin content, mesh size and packing are aligned to buyer requirements.',
+    highlights: ['Whole fingers or powder', 'Grade to buyer specification', 'Bulk and retail packing'],
+    specs: { Form: 'Fingers / Powder', Grade: 'As per requirement', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
+    image: '/images/products/turmeric.jpg',
+  },
+  {
+    id: 15,
+    slug: 'dry-red-chillies',
+    name: 'Dry Red Chillies',
+    category: 'consumer-goods',
+    featured: false,
+    summary: 'Whole dried red chillies and chilli powder in multiple varieties.',
+    description:
+      'Dried red chillies in whole, crushed and powdered forms. Varieties selected for colour and heat level according to the destination market.',
+    highlights: ['Whole, crushed and powder', 'Varieties by colour and heat', 'Bulk and retail packing'],
+    specs: { Form: 'Whole / Crushed / Powder', Variety: 'As per requirement', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
+    image: '/images/products/dry-red-chillies.jpg',
+  },
+  {
+    id: 16,
+    slug: 'lentils',
+    name: 'Lentils & Pulses',
+    category: 'consumer-goods',
+    featured: false,
+    summary: 'Toor, moong, chana, masoor and urad dals, whole and split.',
+    description:
+      'Indian pulses including toor dal, moong dal, chana dal, masoor dal and urad dal, available whole or split, polished or unpolished.',
+    highlights: ['Toor, moong, chana, masoor, urad', 'Whole and split options', 'Polished or unpolished'],
+    specs: { Types: 'Toor / Moong / Chana / Masoor / Urad', Form: 'Whole / Split', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
+    image: '/images/products/lentils.jpg',
+  },
+  {
+    id: 17,
+    slug: 'rice',
+    name: 'Rice',
+    category: 'consumer-goods',
+    featured: false,
+    summary: 'Basmati and non-basmati rice in raw, steamed and parboiled forms.',
+    description:
+      'Basmati and non-basmati rice varieties in raw, steamed and parboiled forms. Grain length, polish and packaging as per buyer specification.',
+    highlights: ['Basmati and non-basmati', 'Raw, steamed and parboiled', 'Packing to specification'],
+    specs: { Types: 'Basmati / Non-basmati', Processing: 'Raw / Steamed / Parboiled', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
+    image: '/images/products/rice.jpg',
+  },
+
+  // ── Snacks ────────────────────────────────────────────────────────────
+  {
+    id: 18,
+    slug: 'indian-namkeen-snacks',
+    name: 'Indian Namkeen Snacks',
+    category: 'consumer-goods',
+    featured: false,
+    summary: 'Savoury Indian snacks such as bhujia, mixtures and chips in retail packs.',
+    description:
+      'Packaged savoury snacks including bhujia, mixtures, chips and other traditional namkeen. Supplied in retail pack sizes with shelf life and labelling suited to export.',
+    highlights: ['Bhujia, mixtures, chips and more', 'Retail pack sizes', 'Export-ready labelling'],
+    specs: { Types: 'Bhujia, mixtures, chips, traditional namkeen', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
+    image: '/images/products/indian-namkeen-snacks.jpg',
+  },
+  {
+    id: 19,
+    slug: 'biscuits-and-cookies',
+    name: 'Biscuits & Cookies',
+    category: 'consumer-goods',
+    featured: false,
+    summary: 'Packaged biscuits and cookies across sweet, ivory and cracker ranges.',
+    description:
+      'Packaged biscuits and cookies including glucose, ivory, digestive and cracker varieties. Available in retail packs and family packs with export labelling.',
+    highlights: ['Glucose, ivory, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
+    specs: { Types: 'Glucose, ivory, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
+    image: '/images/products/biscuits-and-cookies.jpg',
+  },
+]
+
+// Products that fall outside the five categories the client specified
+// (industrial fasteners, valves and electrical fittings). Kept here rather than
+// deleted so any of them can be restored by moving the entry back into
+// `products` and giving it a current category slug.
+export const archivedProducts = [
   {
     id: 9,
     slug: 'nuts-and-bolts',
@@ -321,101 +424,6 @@ export const products = [
     highlights: ['Switches, sockets and junction boxes', 'Conduit fittings and accessories', 'Residential and commercial use'],
     specs: { Types: 'Switches, sockets, junction boxes, conduit fittings', Material: 'Polycarbonate / Brass / Steel', Standards: 'As per requirement', Packaging: 'Retail or bulk' },
     image: '/images/products/electrical-fittings.jpg',
-  },
-  {
-    id: 13,
-    slug: 'brass-hardware',
-    name: 'Brass Hardware',
-    category: 'engineering',
-    featured: true,
-    summary: 'Brass hinges, handles, knobs and fittings for doors, furniture and decor.',
-    description:
-      'Brass hardware including hinges, handles, knobs, latches and decorative fittings, produced in Indian brass manufacturing clusters. Finishes include polished, antique and lacquered.',
-    highlights: ['Hinges, handles, knobs and latches', 'Polished, antique and lacquered finishes', 'Furniture and architectural use'],
-    specs: { Material: 'Brass', Types: 'Hinges, handles, knobs, latches, fittings', Finish: 'Polished / Antique / Lacquered', Packaging: 'Individual or bulk' },
-    image: '/images/products/brass-hardware.jpg',
-  },
-
-  // ── Spices & Pulses ────────────────────────────────────────────────────
-  {
-    id: 14,
-    slug: 'turmeric',
-    name: 'Turmeric',
-    category: 'spices',
-    featured: true,
-    summary: 'Turmeric fingers and ground turmeric powder.',
-    description:
-      'Turmeric supplied as whole fingers or ground powder. Grade, curcumin content, mesh size and packing are aligned to buyer requirements.',
-    highlights: ['Whole fingers or powder', 'Grade to buyer specification', 'Bulk and retail packing'],
-    specs: { Form: 'Fingers / Powder', Grade: 'As per requirement', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
-    image: '/images/products/turmeric.jpg',
-  },
-  {
-    id: 15,
-    slug: 'dry-red-chillies',
-    name: 'Dry Red Chillies',
-    category: 'spices',
-    featured: false,
-    summary: 'Whole dried red chillies and chilli powder in multiple varieties.',
-    description:
-      'Dried red chillies in whole, crushed and powdered forms. Varieties selected for colour and heat level according to the destination market.',
-    highlights: ['Whole, crushed and powder', 'Varieties by colour and heat', 'Bulk and retail packing'],
-    specs: { Form: 'Whole / Crushed / Powder', Variety: 'As per requirement', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
-    image: '/images/products/dry-red-chillies.jpg',
-  },
-  {
-    id: 16,
-    slug: 'lentils',
-    name: 'Lentils & Pulses',
-    category: 'spices',
-    featured: false,
-    summary: 'Toor, moong, chana, masoor and urad dals, whole and split.',
-    description:
-      'Indian pulses including toor dal, moong dal, chana dal, masoor dal and urad dal, available whole or split, polished or unpolished.',
-    highlights: ['Toor, moong, chana, masoor, urad', 'Whole and split options', 'Polished or unpolished'],
-    specs: { Types: 'Toor / Moong / Chana / Masoor / Urad', Form: 'Whole / Split', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
-    image: '/images/products/lentils.jpg',
-  },
-  {
-    id: 17,
-    slug: 'rice',
-    name: 'Rice',
-    category: 'spices',
-    featured: false,
-    summary: 'Basmati and non-basmati rice in raw, steamed and parboiled forms.',
-    description:
-      'Basmati and non-basmati rice varieties in raw, steamed and parboiled forms. Grain length, polish and packaging as per buyer specification.',
-    highlights: ['Basmati and non-basmati', 'Raw, steamed and parboiled', 'Packing to specification'],
-    specs: { Types: 'Basmati / Non-basmati', Processing: 'Raw / Steamed / Parboiled', Packaging: 'Bulk bags or retail packs', Origin: 'India' },
-    image: '/images/products/rice.jpg',
-  },
-
-  // ── Pre-packaged Snacks ────────────────────────────────────────────────
-  {
-    id: 18,
-    slug: 'indian-namkeen-snacks',
-    name: 'Indian Namkeen Snacks',
-    category: 'snacks',
-    featured: false,
-    summary: 'Savoury Indian snacks such as bhujia, mixtures and chips in retail packs.',
-    description:
-      'Packaged savoury snacks including bhujia, mixtures, chips and other traditional namkeen. Supplied in retail pack sizes with shelf life and labelling suited to export.',
-    highlights: ['Bhujia, mixtures, chips and more', 'Retail pack sizes', 'Export-ready labelling'],
-    specs: { Types: 'Bhujia, mixtures, chips, traditional namkeen', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
-    image: '/images/products/indian-namkeen-snacks.jpg',
-  },
-  {
-    id: 19,
-    slug: 'biscuits-and-cookies',
-    name: 'Biscuits & Cookies',
-    category: 'snacks',
-    featured: false,
-    summary: 'Packaged biscuits and cookies across sweet, ivory and cracker ranges.',
-    description:
-      'Packaged biscuits and cookies including glucose, ivory, digestive and cracker varieties. Available in retail packs and family packs with export labelling.',
-    highlights: ['Glucose, ivory, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
-    specs: { Types: 'Glucose, ivory, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
-    image: '/images/products/biscuits-and-cookies.jpg',
   },
 ]
 

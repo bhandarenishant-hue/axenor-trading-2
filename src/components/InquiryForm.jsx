@@ -122,7 +122,7 @@ export default function InquiryForm({ defaultProduct = '' }) {
         </Field>
       </div>
       <Field label="Message" id="message" required error={errors.message}>
-        <textarea id="message" name="message" rows={5} value={values.message} onChange={update} className={fieldClass} placeholder="Specifications, destination, packaging, timelines or any other requirements." aria-invalid={!!errors.message} />
+        <textarea id="message" name="message" rows={5} value={values.message} onChange={update} className={fieldClass} placeholder="Specifications, delivery location, packaging, timelines or any other requirements." aria-invalid={!!errors.message} />
       </Field>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-slate">Fields marked * are required.</p>

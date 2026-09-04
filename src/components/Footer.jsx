@@ -92,7 +92,7 @@ export default function Footer() {
             © {year} {(company.legalName ?? company.name).replace(/\.$/, '')}. All rights reserved.
             {registration?.number && <span className="ml-1">Company No. {registration.number}.</span>}
           </p>
-          <p>Export-oriented B2B trading from {company.basedIn}.</p>
+          <p>{company.positioning}.</p>
         </Container>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Boxes, FileCheck2, Handshake } from 'lucide-react'
+import { ArrowRight, Boxes, Handshake, MapPin, Ship } from 'lucide-react'
 import Container from '../components/Container'
 import Button from '../components/Button'
 import SectionHeading from '../components/SectionHeading'
@@ -12,17 +12,17 @@ const pillars = [
   {
     icon: Boxes,
     title: 'Sourcing',
-    text: 'We work with manufacturers and producers across India to source products against buyer specifications.',
+    text: 'We work with established suppliers across Asia, particularly in India and China, to source products against the specifications our clients set.',
   },
   {
-    icon: FileCheck2,
-    title: 'Coordination',
-    text: 'We manage quotations, sampling, packing and export documentation so buyers deal with a single point of contact.',
+    icon: Ship,
+    title: 'Import',
+    text: 'We coordinate international sourcing and import operations so that stock arrives ready for the Malaysian market.',
   },
   {
     icon: Handshake,
-    title: 'Long-term supply',
-    text: 'Our aim is repeat, dependable supply relationships rather than one-off transactions.',
+    title: 'Distribution',
+    text: 'We supply retailers, e-commerce platforms and B2B clients, aiming for dependable repeat supply rather than one-off transactions.',
   },
 ]
 
@@ -34,9 +34,10 @@ export default function About() {
           <Reveal>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">About {company.name}</p>
             <h1 className="max-w-3xl text-4xl font-extrabold leading-tight text-forest sm:text-5xl">
-              A trading partner for buyers sourcing from India.
+              A Malaysian trading and import-export company.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate">{company.about}</p>
+            <p className="mt-4 max-w-2xl leading-relaxed text-slate">{company.aboutSecondary}</p>
           </Reveal>
         </Container>
       </section>
@@ -44,22 +45,39 @@ export default function About() {
       <section className="py-20 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <SectionHeading eyebrow="What we do" title="Export-oriented B2B trading." />
+            <SectionHeading eyebrow="What we do" title="Sourcing, import and distribution." />
             <p className="mt-5 leading-relaxed text-slate">
-              {company.name} connects international buyers with Indian products across consumer, agricultural and industrial
-              categories. We handle the sourcing and coordination on the ground so that buyers receive a clear quotation and
-              a single point of contact through to shipment.
+              {company.name} connects international suppliers with businesses in Malaysia. We source products abroad,
+              import them, and distribute them to retailers, e-commerce platforms and B2B clients, so our clients deal
+              with one partner rather than a chain of intermediaries. We do not manufacture: our role is sourcing and
+              supply.
             </p>
-            {company.markets.length > 0 && (
-              <div className="mt-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Markets served</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {company.markets.map((m) => (
-                    <li key={m} className="rounded-full border border-line bg-white px-3 py-1 text-sm text-forest">{m}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Sourcing markets</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {company.sourcingMarkets.map((m) => (
+                  <li key={m.name} className="rounded-full border border-line bg-white px-3 py-1 text-sm text-forest">
+                    {m.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Serving</p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {[company.basedIn, 'Southeast Asia'].map((place) => (
+                  <li
+                    key={place}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-sm text-forest"
+                  >
+                    <MapPin className="h-3.5 w-3.5 text-sage-dark" />
+                    {place}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
           <div className="grid gap-5 lg:col-span-7">
             {pillars.map((p, i) => (
@@ -146,11 +164,11 @@ export default function About() {
       <section className="py-20">
         <Container className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <h2 className="text-3xl font-bold text-forest">Have a requirement in mind?</h2>
+            <h2 className="text-3xl font-bold text-forest">Have a sourcing requirement?</h2>
             <p className="mt-2 text-slate">Send the details and we will come back with sourcing options.</p>
           </div>
           <Button to="/contact" variant="primary" size="lg">
-            Send Inquiry <ArrowRight className="h-4 w-4" />
+            Discuss Your Sourcing Needs <ArrowRight className="h-4 w-4" />
           </Button>
         </Container>
       </section>

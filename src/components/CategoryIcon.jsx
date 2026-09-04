@@ -1,6 +1,6 @@
-import { Shirt, Leaf, Wrench, Wheat, Cookie, Package } from 'lucide-react'
+import { Cpu, Lamp, Layers, Package, Shirt, ShoppingBasket } from 'lucide-react'
 
-const icons = { Shirt, Leaf, Wrench, Wheat, Cookie }
+const icons = { Layers, Shirt, ShoppingBasket, Lamp, Cpu }
 
 export default function CategoryIcon({ name, className = 'h-5 w-5', strokeWidth = 1.6 }) {
   const Icon = icons[name] || Package

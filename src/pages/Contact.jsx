@@ -21,8 +21,8 @@ export default function Contact() {
           <h1 className="text-4xl font-extrabold leading-tight text-forest sm:text-5xl">Send an inquiry</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate">
             {product
-              ? `Tell us your requirement for ${product.name}. Include quantity, destination and any specifications.`
-              : 'Share the product, quantity, destination and specifications. We will respond with sourcing options and a quotation.'}
+              ? `Tell us your requirement for ${product.name}. Include quantity, delivery location and any specifications.`
+              : 'Share the product, quantity, delivery location and specifications. We will respond with sourcing options and a quotation.'}
           </p>
         </Container>
       </section>
@@ -42,7 +42,7 @@ export default function Contact() {
               <ul className="mt-5 space-y-3 text-sm text-ivory/75">
                 <li className="flex gap-3"><span className="text-sage">01</span>Product name and the category it falls under.</li>
                 <li className="flex gap-3"><span className="text-sage">02</span>Required quantity and target order frequency.</li>
-                <li className="flex gap-3"><span className="text-sage">03</span>Destination country or port.</li>
+                <li className="flex gap-3"><span className="text-sage">03</span>Delivery location.</li>
                 <li className="flex gap-3"><span className="text-sage">04</span>Specifications, packaging or labelling requirements.</li>
                 <li className="flex gap-3"><span className="text-sage">05</span>Timelines, if any.</li>
               </ul>

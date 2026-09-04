@@ -1,6 +1,12 @@
 # Axenor Trading — Frontend
 
-Frontend for the Axenor Trading B2B catalog website. Frontend only: there is no backend yet.
+Frontend for the Axenor Trading website. Frontend only: there is no backend yet.
+
+**Positioning.** Axenor Trading Sdn. Bhd. is a Malaysian trading and import-export company
+headquartered in Kuala Lumpur. It sources products from international suppliers across Asia,
+particularly India and China, imports them into Malaysia, and distributes them to retailers,
+e-commerce platforms and B2B clients across Malaysia and Southeast Asia. It does **not** manufacture.
+Never describe it as India-based, as an Indian company, or as a producer of the goods it sells.
 
 Stack: React 19, Vite, Tailwind CSS v4, React Router 7, Motion (animations), Embla Carousel, Lucide icons.
 Fonts: Manrope (headings) and Inter (body) via Google Fonts.
@@ -21,6 +27,10 @@ Build for production with `npm run build` (output in `dist/`). Lint with `npm ru
   the UI until filled in. Nothing is invented.
 - `src/data/products.js` — categories, subcategories and products. Each entry has an `image` path
   under `public/images/`; set it to `null` to fall back to the branded placeholder graphic.
+
+The five product categories are Textiles, Garments, Consumer Goods, Home Accessories and
+Electronics. Electronics carries no catalogued lines yet, so its category is flagged and the UI shows a sourcing prompt instead of a product count. Products that fall outside these five
+categories live in  rather than being deleted.
 
 ### Catalog hierarchy
 
@@ -58,7 +68,7 @@ Views are addressed by query string, so any level is linkable:
 
 | Route | Page |
 | --- | --- |
-| `/` | Home: hero slider, feature strip, about statement, category tiles, product carousel, process, CTA |
+| `/` | Home: hero slider, supply-chain flow, about, category tiles, product carousel, sourcing network, how we work, who we supply, why Axenor, CTA |
 | `/products` | Catalog with search and category filter (`?category=slug&q=text`) |
 | `/products/:slug` | Product detail with specs, related products and Send Inquiry |
 | `/about` | Company overview |
