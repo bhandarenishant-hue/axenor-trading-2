@@ -38,7 +38,7 @@ export default function ProductOrbit({ items = featuredProducts.slice(0, 6), dur
                   <span className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-widest text-sage">{p.name}</span>
                 )}
               </Link>
-              <span className="mt-1.5 whitespace-nowrap rounded-full border border-sage/50 bg-forest/85 px-2.5 py-0.5 font-heading text-[10px] font-bold tracking-wide text-ivory shadow-md backdrop-blur-sm sm:mt-2 sm:px-3 sm:py-1 sm:text-[11px] lg:text-xs">
+              <span className="mt-1.5 whitespace-nowrap rounded-full border border-sage/50 bg-forest/85 px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-ivory shadow-md backdrop-blur-sm sm:mt-2 sm:px-3 sm:py-1 sm:text-[11px] lg:text-xs">
                 {getCategory(p.category)?.short ?? p.name}
               </span>
             </div>

@@ -328,7 +328,7 @@ export default function Home() {
                     {company.experience.years}
                   </span>
                   <div>
-                    <p className="font-heading text-[11px] font-bold uppercase tracking-[0.16em] text-sage-light">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sage-light">
                       {company.experience.label}
                     </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-ivory/75">{company.experience.statement}</p>

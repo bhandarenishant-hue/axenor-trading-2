@@ -59,7 +59,7 @@ export default function SupplyChainFlow({ className = '' }) {
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest text-sage">
                 <s.icon className="h-4 w-4" strokeWidth={1.7} />
               </span>
-              <span className="font-heading text-[11px] font-bold uppercase tracking-[0.16em] text-sage-dark">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-sage-dark">
                 {s.label}
               </span>
             </div>
