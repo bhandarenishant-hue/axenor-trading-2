@@ -317,9 +317,26 @@ export default function Home() {
       {/* Why Axenor */}
       <section className="py-20 lg:py-24">
         <Container>
-          <FadeUp>
-            <SectionHeading eyebrow="Why Axenor" title="Global sourcing, reliable supply, local reach." />
-          </FadeUp>
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <FadeUp>
+              <SectionHeading eyebrow="Why Axenor" title="Global sourcing, reliable supply, local reach." />
+            </FadeUp>
+            {company.experience && (
+              <FadeUp delay={0.1}>
+                <div className="flex items-center gap-5 rounded-xl border border-sage/50 bg-forest p-6 text-ivory lg:min-w-[22rem]">
+                  <span className="font-heading text-5xl font-extrabold leading-none text-sage-light">
+                    {company.experience.years}
+                  </span>
+                  <div>
+                    <p className="font-heading text-[11px] font-bold uppercase tracking-[0.16em] text-sage-light">
+                      {company.experience.label}
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ivory/75">{company.experience.statement}</p>
+                  </div>
+                </div>
+              </FadeUp>
+            )}
+          </div>
           <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
             {features.map((f) => (
               <StaggerItem

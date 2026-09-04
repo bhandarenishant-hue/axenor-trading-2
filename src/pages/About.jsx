@@ -52,6 +52,9 @@ export default function About() {
               with one partner rather than a chain of intermediaries. We do not manufacture: our role is sourcing and
               supply.
             </p>
+            {company.experience && (
+              <p className="mt-4 leading-relaxed text-slate">{company.experience.statement}</p>
+            )}
 
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Sourcing markets</p>

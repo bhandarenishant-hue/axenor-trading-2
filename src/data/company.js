@@ -24,6 +24,17 @@ export const company = {
     'Backed by strong logistics networks and deep market insight, we provide seamless supply chain solutions that connect global manufacturers with local retailers, e-commerce platforms and B2B clients across Malaysia and Southeast Asia.',
   commitment: 'Our commitment lies in delivering exceptional product quality, competitive pricing and reliable service.',
 
+  // The client states seven years of import and export experience. The company
+  // itself was incorporated in 2026 (see `registration` below), so this is the
+  // team's experience in the trade rather than the age of the legal entity.
+  // Keep the wording attributed to the team so the two facts never read as a
+  // contradiction to anyone who checks the public register.
+  experience: {
+    years: 7,
+    label: 'Years of import and export experience',
+    statement: 'Our team brings seven years of hands-on experience in importing and exporting.',
+  },
+
   // Where the company itself sits. Matches the country of incorporation in
   // `registration` below. Axenor does not manufacture: it sources, imports
   // and distributes, so never describe it as a producer.
