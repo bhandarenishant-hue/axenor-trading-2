@@ -8,9 +8,11 @@ import CategoryIcon from '../components/CategoryIcon'
 import {
   categories,
   getCategory,
+  getSource,
   getSubcategoriesByCategory,
   getSubcategory,
   products,
+  sources,
   subcategories,
 } from '../data/products'
 
@@ -46,7 +48,10 @@ export default function Products() {
   const [params, setParams] = useSearchParams()
   const sub = params.get('sub') || ''
   const query = params.get('q') || ''
+  const source = params.get('source') || ''
   const activeSub = getSubcategory(sub)
+  const activeSource = getSource(source)
+  const sourceCountry = activeSource?.country
 
   // A subcategory implies its parent category, even if the URL omits it.
   const category = activeSub ? activeSub.category : params.get('category') || ''
@@ -62,7 +67,15 @@ export default function Products() {
     setParams(next, { replace: true })
   }
 
-  const childSubs = category ? getSubcategoriesByCategory(category) : []
+  // Count products in a group under the sourcing origin currently selected.
+  const countIn = (predicate) =>
+    products.filter((p) => predicate(p) && (!sourceCountry || p.sourceCountry === sourceCountry)).length
+
+  // A subcategory tile is only useful if it still holds something once the
+  // source filter is applied.
+  const childSubs = category
+    ? getSubcategoriesByCategory(category).filter((s) => countIn((p) => p.subcategory === s.slug) > 0)
+    : []
 
   // Tiles are only a navigation aid, so they stay out of the way while searching
   // or once the visitor has already stepped into a subcategory.
@@ -71,6 +84,7 @@ export default function Products() {
   // The catalog is small enough that filtering on every render costs nothing.
   const q = query.trim().toLowerCase()
   const filtered = products.filter((p) => {
+    if (sourceCountry && p.sourceCountry !== sourceCountry) return false
     if (sub && p.subcategory !== sub) return false
     if (!sub && category && p.category !== category) return false
     // In a category view the subcategory tiles stand in for their products,
@@ -83,12 +97,20 @@ export default function Products() {
     return haystack.includes(q)
   })
 
-  const heading = activeSub ? activeSub.name : activeCategory ? activeCategory.name : 'All products'
+  const heading = activeSub
+    ? activeSub.name
+    : activeCategory
+      ? activeCategory.name
+      : activeSource
+        ? activeSource.filterLabel
+        : 'All products'
   const blurb = activeSub
     ? activeSub.description
     : activeCategory
       ? activeCategory.description
-      : 'Product lines we source from international suppliers and import for the Malaysian market. Open any product to view details and send an inquiry.'
+      : activeSource
+        ? `Product lines we source from suppliers in ${activeSource.country} and import for the Malaysian market.`
+        : 'Product lines we source from international suppliers and import for the Malaysian market. Open any product to view details and send an inquiry.'
 
   const chip = (isActive) =>
     `rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
@@ -119,9 +141,39 @@ export default function Products() {
 
       <section className="py-10 lg:py-14">
         <Container>
+          {/* Sourcing origin, filtered independently of category */}
+          <div className="mb-5 flex flex-wrap items-center gap-2" role="group" aria-label="Filter by sourcing origin">
+            <span className="mr-1 text-xs font-semibold uppercase tracking-[0.2em] text-sage-dark">Origin</span>
+            <button
+              type="button"
+              onClick={() => setParam('source', '')}
+              aria-pressed={!source}
+              className={chip(!source)}
+            >
+              All Products
+            </button>
+            {sources.map((s) => (
+              <button
+                key={s.slug}
+                type="button"
+                onClick={() => setParam('source', s.slug)}
+                aria-pressed={source === s.slug}
+                className={`${chip(source === s.slug)} inline-flex items-center gap-2`}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`text-[10px] font-bold tracking-[0.08em] ${source === s.slug ? 'text-sage-light' : 'text-sage-dark'}`}
+                >
+                  {s.code}
+                </span>
+                {s.filterLabel}
+              </button>
+            ))}
+          </div>
+
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
-              <button type="button" onClick={() => setParam('category', '')} className={chip(!category)}>
+              <button type="button" onClick={() => setParam('category', '')} aria-pressed={!category} className={chip(!category)}>
                 All
               </button>
               {categories.map((c) => (
@@ -129,6 +181,7 @@ export default function Products() {
                   key={c.slug}
                   type="button"
                   onClick={() => setParam('category', c.slug)}
+                  aria-pressed={category === c.slug}
                   className={chip(category === c.slug)}
                 >
                   {c.short}
@@ -180,10 +233,7 @@ export default function Products() {
               <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {childSubs.map((s, i) => (
                   <Reveal key={s.slug} delay={i * 60}>
-                    <SubcategoryTile
-                      subcategory={s}
-                      count={products.filter((p) => p.subcategory === s.slug).length}
-                    />
+                    <SubcategoryTile subcategory={s} count={countIn((p) => p.subcategory === s.slug)} />
                   </Reveal>
                 ))}
               </div>
@@ -220,11 +270,14 @@ export default function Products() {
                 {activeCategory && !searching ? (
                   <>
                     <h2 className="text-lg font-bold text-forest">
-                      We source {activeCategory.name.toLowerCase()} to order.
+                      {activeSource
+                        ? `No ${activeCategory.name.toLowerCase()} listed from ${activeSource.country} yet.`
+                        : `We source ${activeCategory.name.toLowerCase()} to order.`}
                     </h2>
                     <p className="mx-auto mt-2 max-w-md text-sm text-slate">
-                      This range is not catalogued yet. Tell us the specification, quantity and timeline, and we will
-                      come back with sourcing options.
+                      {activeSource
+                        ? 'Clear the origin filter to see this category from our other sourcing markets, or tell us what you need.'
+                        : 'This range is not catalogued yet. Tell us the specification, quantity and timeline, and we will come back with sourcing options.'}
                     </p>
                     <div className="mt-6 flex flex-wrap justify-center gap-3">
                       <Button to="/contact" variant="primary">

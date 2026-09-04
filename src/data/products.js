@@ -1,5 +1,14 @@
 // Product catalog. Images live in /public/images; set image: null to fall back to the branded placeholder.
 
+
+// Sourcing origins. Every product carries `sourceCountry` and `sourceLabel`
+// so cards and filters can show where a line is imported from. Country codes
+// are used rather than flag emoji, which Windows renders as plain letter pairs.
+export const sources = [
+  { slug: 'india', code: 'IN', country: 'India', label: 'India Import', filterLabel: 'India Imports' },
+  { slug: 'china', code: 'CN', country: 'China', label: 'China Import', filterLabel: 'China Imports' },
+]
+
 export const categories = [
   {
     slug: 'textiles',
@@ -35,13 +44,27 @@ export const categories = [
   },
   {
     slug: 'electronics',
-    name: 'Electronics',
+    name: 'Consumer Electronics & Smart Accessories',
     short: 'Electronics',
     icon: 'Cpu',
     image: '/images/categories/electronics.jpg',
-    description: 'Consumer and accessory electronics. Ranges are sourced to order, so tell us what you need.',
-    // No catalogued lines yet: the UI shows an enquiry prompt instead of a count.
-    enquiryOnly: true,
+    description: 'Audio, charging, power and wearable accessories sourced from suppliers in China.',
+  },
+  {
+    slug: 'chemicals',
+    name: 'Industrial, Fine & Specialty Chemicals',
+    short: 'Chemicals',
+    icon: 'FlaskConical',
+    image: '/images/categories/chemicals.jpg',
+    description: 'Industrial and specialty chemical lines sourced for commercial and manufacturing buyers.',
+  },
+  {
+    slug: 'lighting',
+    name: 'Lighting, Smart Decor & Household',
+    short: 'Lighting & Decor',
+    icon: 'Lightbulb',
+    image: '/images/categories/lighting.jpg',
+    description: 'Smart lighting, storage and small household goods for retail and e-commerce ranges.',
   },
 ]
 
@@ -66,6 +89,8 @@ export const products = [
     slug: 'cotton-bedsheet-sets',
     name: 'Cotton Bedsheet Sets',
     category: 'home-accessories',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Woven cotton bedsheets with matching pillow covers in a range of sizes and prints.',
     description:
@@ -84,6 +109,8 @@ export const products = [
     name: 'Banarasi Silk Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Varanasi silk sarees woven with gold and silver zari brocade.',
     description:
@@ -98,6 +125,8 @@ export const products = [
     name: 'Kanjivaram Silk Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Heavy mulberry silk sarees from Tamil Nadu with contrast interlocked borders.',
     description:
@@ -112,6 +141,8 @@ export const products = [
     name: 'Chanderi Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Lightweight sheer sarees in silk-cotton from Madhya Pradesh.',
     description:
@@ -126,6 +157,8 @@ export const products = [
     name: 'Bandhani Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Tie-and-dye sarees from Gujarat and Rajasthan patterned in fine dots.',
     description:
@@ -140,6 +173,8 @@ export const products = [
     name: 'Paithani Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Silk sarees from Maharashtra with zari borders and figured pallu.',
     description:
@@ -154,6 +189,8 @@ export const products = [
     name: 'Sambalpuri Ikat Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Odisha sarees patterned by tie-dyeing the yarn before weaving.',
     description:
@@ -168,6 +205,8 @@ export const products = [
     name: 'Tussar Silk Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Textured wild silk sarees with a natural golden tone.',
     description:
@@ -182,6 +221,8 @@ export const products = [
     name: 'Cotton Handloom Saree',
     category: 'textiles',
     subcategory: 'sarees',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Everyday handloom cotton sarees suited to warm climates.',
     description:
@@ -195,6 +236,8 @@ export const products = [
     slug: 'ethnic-wear',
     name: 'Ethnic Wear',
     category: 'garments',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Kurtas, kurta sets and traditional Indian garments for men and women.',
     description:
@@ -208,6 +251,8 @@ export const products = [
     slug: 'cotton-t-shirts',
     name: 'Cotton T-Shirts',
     category: 'garments',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Plain and printed cotton T-shirts suitable for retail and private label.',
     description:
@@ -221,6 +266,8 @@ export const products = [
     slug: 'terry-towels',
     name: 'Terry Towels',
     category: 'home-accessories',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Cotton terry bath, hand and face towels in solid colours and stripes.',
     description:
@@ -236,6 +283,8 @@ export const products = [
     slug: 'natural-handmade-soaps',
     name: 'Natural Handmade Soaps',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Handmade soap bars using plant-based oils and traditional botanical ingredients.',
     description:
@@ -249,6 +298,8 @@ export const products = [
     slug: 'herbal-hair-oils',
     name: 'Herbal Hair Oils',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Hair oils blended with herbs traditionally used in Indian hair care.',
     description:
@@ -262,6 +313,8 @@ export const products = [
     slug: 'herbal-face-packs',
     name: 'Herbal Face Packs',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Powder and paste face packs made from clays, herbs and botanicals.',
     description:
@@ -276,6 +329,8 @@ export const products = [
     slug: 'brass-hardware',
     name: 'Brass Hardware',
     category: 'home-accessories',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Brass hinges, handles, knobs and fittings for doors, furniture and decor.',
     description:
@@ -291,6 +346,8 @@ export const products = [
     slug: 'turmeric',
     name: 'Turmeric',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Turmeric fingers and ground turmeric powder.',
     description:
@@ -304,6 +361,8 @@ export const products = [
     slug: 'dry-red-chillies',
     name: 'Dry Red Chillies',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Whole dried red chillies and chilli powder in multiple varieties.',
     description:
@@ -317,6 +376,8 @@ export const products = [
     slug: 'lentils',
     name: 'Lentils & Pulses',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Toor, moong, chana, masoor and urad dals, whole and split.',
     description:
@@ -330,6 +391,8 @@ export const products = [
     slug: 'rice',
     name: 'Rice',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Basmati and non-basmati rice in raw, steamed and parboiled forms.',
     description:
@@ -345,6 +408,8 @@ export const products = [
     slug: 'indian-namkeen-snacks',
     name: 'Indian Namkeen Snacks',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Savoury Indian snacks such as bhujia, mixtures and chips in retail packs.',
     description:
@@ -358,6 +423,8 @@ export const products = [
     slug: 'biscuits-and-cookies',
     name: 'Biscuits & Cookies',
     category: 'consumer-goods',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Packaged biscuits and cookies across sweet, ivory and cracker ranges.',
     description:
@@ -365,6 +432,194 @@ export const products = [
     highlights: ['Glucose, ivory, digestive and crackers', 'Retail and family packs', 'Export-ready labelling'],
     specs: { Types: 'Glucose, ivory, digestive, crackers', 'Pack sizes': 'As per requirement', Packaging: 'Retail packs in cartons', Origin: 'India' },
     image: '/images/products/biscuits-and-cookies.jpg',
+  },
+  // ── Industrial, Fine & Specialty Chemicals (China) ─────────────────────
+  // No product photography supplied for the chemical lines, and a generic
+  // powder or drum shot would misrepresent a specific chemical, so these fall
+  // back to the branded placeholder until real images are available.
+  {
+    id: 28,
+    slug: 'citric-acid',
+    name: 'Citric Acid (Anhydrous / Monohydrate)',
+    category: 'chemicals',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Available in anhydrous and monohydrate forms.',
+    description:
+      'Citric acid for industrial and commercial sourcing requirements, available in anhydrous and monohydrate forms. Sourced from suppliers in China and imported into Malaysia.',
+    highlights: ['Anhydrous and monohydrate forms', 'For industrial and commercial requirements'],
+    specs: { Forms: 'Anhydrous / Monohydrate', 'Source country': 'China' },
+    image: null,
+  },
+  {
+    id: 29,
+    slug: 'calcium-chloride',
+    name: 'Calcium Chloride (Pellets / Flakes)',
+    category: 'chemicals',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Available in pellet and flake forms.',
+    description:
+      'Calcium chloride for industrial and commercial sourcing requirements, available in pellet and flake forms. Sourced from suppliers in China and imported into Malaysia.',
+    highlights: ['Pellet and flake forms', 'For industrial and commercial requirements'],
+    specs: { Forms: 'Pellets / Flakes', 'Source country': 'China' },
+    image: null,
+  },
+  {
+    id: 30,
+    slug: 'titanium-dioxide',
+    name: 'Titanium Dioxide (TiO₂ Pigment)',
+    category: 'chemicals',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Titanium dioxide pigment for industrial and commercial sourcing requirements.',
+    description:
+      'Titanium dioxide pigment for industrial and commercial sourcing requirements. Sourced from suppliers in China and imported into Malaysia.',
+    highlights: ['Pigment grade', 'For industrial and commercial requirements'],
+    specs: { Type: 'TiO₂ pigment', 'Source country': 'China' },
+    image: null,
+  },
+  {
+    id: 31,
+    slug: 'sodium-lauryl-ether-sulfate',
+    name: 'Sodium Lauryl Ether Sulfate (SLES 70%)',
+    category: 'chemicals',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Sodium Lauryl Ether Sulfate (SLES 70%) for commercial sourcing requirements.',
+    description:
+      'Sodium Lauryl Ether Sulfate (SLES 70%) for commercial sourcing requirements. Sourced from suppliers in China and imported into Malaysia.',
+    highlights: ['SLES 70%', 'For commercial requirements'],
+    specs: { Grade: 'SLES 70%', 'Source country': 'China' },
+    image: null,
+  },
+
+  // ── Consumer Electronics & Smart Accessories (China) ───────────────────
+  {
+    id: 32,
+    slug: 'tws-wireless-earbuds',
+    name: 'TWS Wireless Earbuds / Bluetooth Headsets',
+    category: 'electronics',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: true,
+    summary: 'TWS wireless earbuds and Bluetooth headset products.',
+    description:
+      'TWS wireless earbuds and Bluetooth headset products. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['TWS wireless earbuds', 'Bluetooth headsets'],
+    specs: { Types: 'TWS earbuds / Bluetooth headsets', 'Source country': 'China' },
+    image: '/images/products/tws-wireless-earbuds.jpg',
+  },
+  {
+    id: 33,
+    slug: 'magnetic-power-banks',
+    name: 'Magnetic Fast Power Banks',
+    category: 'electronics',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Magnetic fast power banks available in 10,000–20,000 mAh capacities.',
+    description:
+      'Magnetic fast power banks available in 10,000–20,000 mAh capacities. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['Magnetic fast charging', '10,000–20,000 mAh capacities'],
+    specs: { Capacities: '10,000–20,000 mAh', 'Source country': 'China' },
+    image: '/images/products/magnetic-power-banks.jpg',
+  },
+  {
+    id: 34,
+    slug: 'gan-chargers-usb-c-cables',
+    name: 'GaN Fast Wall Chargers & Braided USB-C Cables',
+    category: 'electronics',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'GaN fast wall chargers with braided USB-C cable options.',
+    description:
+      'GaN fast wall chargers with braided USB-C cable options. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['GaN fast wall chargers', 'Braided USB-C cable options'],
+    specs: { Types: 'GaN wall chargers / Braided USB-C cables', 'Source country': 'China' },
+    image: '/images/products/gan-chargers-usb-c-cables.jpg',
+  },
+  {
+    id: 35,
+    slug: 'fitness-bands-smartwatches',
+    name: 'Smart Fitness Bands & Smartwatches',
+    category: 'electronics',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Smart fitness bands and smartwatches.',
+    description:
+      'Smart fitness bands and smartwatches. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['Smart fitness bands', 'Smartwatches'],
+    specs: { Types: 'Fitness bands / Smartwatches', 'Source country': 'China' },
+    image: '/images/products/fitness-bands-smartwatches.jpg',
+  },
+
+  // ── Lighting, Smart Decor & Household (China) ──────────────────────────
+  {
+    id: 36,
+    slug: 'smart-rgb-led-strip-lights',
+    name: 'App-Controlled Smart RGB LED Strip Lights',
+    category: 'lighting',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: true,
+    summary: 'App-controlled smart RGB LED strip lighting.',
+    description:
+      'App-controlled smart RGB LED strip lighting. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['App-controlled', 'RGB LED strip lighting'],
+    specs: { Control: 'App-controlled', Type: 'RGB LED strip', 'Source country': 'China' },
+    image: '/images/products/smart-rgb-led-strip-lights.jpg',
+  },
+  {
+    id: 37,
+    slug: 'solar-outdoor-lights',
+    name: 'Solar Powered Outdoor Garden / Flood Lights',
+    category: 'lighting',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Solar-powered outdoor garden and flood lighting products.',
+    description:
+      'Solar-powered outdoor garden and flood lighting products. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['Solar powered', 'Garden and flood lighting'],
+    specs: { Types: 'Garden / Flood lights', Power: 'Solar', 'Source country': 'China' },
+    image: '/images/products/solar-outdoor-lights.jpg',
+  },
+  {
+    id: 38,
+    slug: 'acrylic-organizers',
+    name: 'Acrylic Vanity, Makeup & Desk Organizers',
+    category: 'lighting',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Acrylic vanity, makeup and desk organizer products.',
+    description:
+      'Acrylic vanity, makeup and desk organizer products. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['Vanity and makeup organizers', 'Desk organizers'],
+    specs: { Material: 'Acrylic', Types: 'Vanity / Makeup / Desk', 'Source country': 'China' },
+    image: '/images/products/acrylic-organizers.jpg',
+  },
+  {
+    id: 39,
+    slug: 'mini-food-choppers',
+    name: 'Electric Mini Food Choppers & Kitchen Gadgets',
+    category: 'lighting',
+    sourceCountry: 'China',
+    sourceLabel: 'China Import',
+    featured: false,
+    summary: 'Electric mini food choppers and kitchen gadget products.',
+    description:
+      'Electric mini food choppers and kitchen gadget products. Sourced from suppliers in China and imported into Malaysia for retail and B2B distribution.',
+    highlights: ['Electric mini food choppers', 'Kitchen gadgets'],
+    specs: { Types: 'Mini food choppers / Kitchen gadgets', 'Source country': 'China' },
+    image: null, // no accurate unbranded photo found; uses the branded placeholder
   },
 ]
 
@@ -378,6 +633,8 @@ export const archivedProducts = [
     slug: 'nuts-and-bolts',
     name: 'Hex Nuts & Bolts',
     category: 'engineering',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: true,
     summary: 'Hex bolts and nuts in carbon and stainless steel across standard thread sizes.',
     description:
@@ -391,6 +648,8 @@ export const archivedProducts = [
     slug: 'screws-and-fasteners',
     name: 'Screws & Fasteners',
     category: 'engineering',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Machine screws, self-tapping screws and allied fasteners.',
     description:
@@ -404,6 +663,8 @@ export const archivedProducts = [
     slug: 'industrial-valves',
     name: 'Industrial Valves',
     category: 'engineering',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Ball, gate and check valves for water, gas and general industrial lines.',
     description:
@@ -417,6 +678,8 @@ export const archivedProducts = [
     slug: 'electrical-fittings',
     name: 'Electrical Fittings',
     category: 'engineering',
+    sourceCountry: 'India',
+    sourceLabel: 'India Import',
     featured: false,
     summary: 'Switches, sockets, conduit fittings and wiring accessories.',
     description:
@@ -433,4 +696,22 @@ export const getSubcategoriesByCategory = (slug) => subcategories.filter((s) => 
 export const getProductsBySubcategory = (slug) => products.filter((p) => p.subcategory === slug)
 export const getProduct = (slug) => products.find((p) => p.slug === slug)
 export const getProductsByCategory = (slug) => products.filter((p) => p.category === slug)
+export const getSource = (slug) => sources.find((s) => s.slug === slug)
+export const getProductsBySource = (country) => products.filter((p) => p.sourceCountry === country)
 export const featuredProducts = products.filter((p) => p.featured)
+
+// Six products for the hero orbit, interleaved by sourcing origin so the ring
+// shows both India and China rather than a run of one country.
+export const orbitProducts = (() => {
+  const byCountry = new Map()
+  for (const p of featuredProducts) {
+    if (!byCountry.has(p.sourceCountry)) byCountry.set(p.sourceCountry, [])
+    byCountry.get(p.sourceCountry).push(p)
+  }
+  const lists = [...byCountry.values()]
+  const picked = []
+  for (let i = 0; picked.length < 6 && lists.some((l) => l[i]); i++) {
+    for (const l of lists) if (l[i] && picked.length < 6) picked.push(l[i])
+  }
+  return picked
+})()

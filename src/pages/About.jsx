@@ -101,9 +101,9 @@ export default function About() {
       <section className="bg-forest py-20 text-ivory lg:py-24">
         <Container>
           <Reveal>
-            <SectionHeading light eyebrow="Product lines" title="Five categories, one point of contact." />
+            <SectionHeading light eyebrow="Product lines" title="One point of contact across every line." />
           </Reveal>
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-lg border border-ivory/10 bg-ivory/10 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mt-12 grid gap-px overflow-hidden rounded-lg border border-ivory/10 bg-ivory/10 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((c, i) => (
               <Reveal key={c.slug} as="li" delay={i * 60} className="bg-forest p-6">
                 <Link to={`/products?category=${c.slug}`} className="group block">

@@ -182,11 +182,11 @@ export default function Home() {
           <FadeUp>
             <SectionHeading
               eyebrow="Products We Source"
-              title="Five product lines, one supply partner."
-              description="Sourced from trusted international suppliers and imported for the Malaysian market."
+              title="Sourced across Asia, supplied in Malaysia."
+              description="Product lines we source from suppliers in India, China and wider Asia, imported for the Malaysian market."
             />
           </FadeUp>
-          <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
+          <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <StaggerItem className="sm:row-span-2">
               <CategoryTile category={categories[0]} large />
             </StaggerItem>

@@ -14,7 +14,7 @@ export const company = {
 
   // Short supporting line for the hero.
   intro:
-    'Headquartered in Kuala Lumpur, Axenor Trading connects trusted international suppliers with businesses across Malaysia and Southeast Asia.',
+    'Headquartered in Kuala Lumpur, Axenor Trading sources from India, China and other Asian markets, and supplies businesses across Malaysia and Southeast Asia.',
 
   // Company description, split into parts so no single block is dumped on a page.
   // Wording follows the description supplied by the client.

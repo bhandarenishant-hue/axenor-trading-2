@@ -12,8 +12,15 @@ export default function ProductCard({ product }) {
       to={`/products/${product.slug}`}
       className="group flex flex-col overflow-hidden rounded-lg border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sage/60 hover:shadow-[0_18px_40px_-20px_rgba(54,69,59,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-sage"
     >
-      <div className="aspect-[4/3] w-full overflow-hidden">
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <ProductImage product={product} className="transition-transform duration-500 group-hover:scale-[1.03]" />
+        {/* Where the line is imported from. Kept small so it reads as a note
+            on the photo rather than a badge competing with the product name. */}
+        {product.sourceLabel && (
+          <span className="absolute right-3 top-3 rounded-full bg-forest/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ivory backdrop-blur-sm">
+            {product.sourceLabel}
+          </span>
+        )}
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sage-dark">{label}</p>

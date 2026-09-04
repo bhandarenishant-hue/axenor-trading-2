@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { featuredProducts, getCategory } from '../data/products'
+import { getCategory, orbitProducts } from '../data/products'
 
 // Circular product images orbiting anticlockwise around the brand mark.
 // The ring rotates one way and each item counter-rotates so photos and
 // labels stay upright as they travel.
-export default function ProductOrbit({ items = featuredProducts.slice(0, 6), duration = 48 }) {
+export default function ProductOrbit({ items = orbitProducts, duration = 48 }) {
   const step = 360 / items.length
   return (
     <div className="orbit group relative mx-auto" aria-label="Featured products" role="group">
