@@ -9,10 +9,7 @@ e-commerce platforms and B2B clients across Malaysia and Southeast Asia. It does
 Never describe it as India-based, as an Indian company, or as a producer of the goods it sells.
 
 Stack: React 19, Vite, Tailwind CSS v4, React Router 7, Motion (animations), Embla Carousel, Lucide icons.
-Fonts: Playfair Display (serif, headings and display text) and Inter (sans-serif, body and UI)
-via Google Fonts. Playfair is a high-contrast serif whose hairlines thin out badly below about
-12px, so micro-labels such as the orbit pills and the small uppercase captions deliberately stay
-on Inter rather than inheriting the heading font.
+Fonts: Manrope (headings) and Inter (body) via Google Fonts.
 
 ## Run
 
