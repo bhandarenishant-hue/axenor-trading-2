@@ -42,9 +42,11 @@ by moving the entry back into `products` with a current category slug.
 The catalog is two levels deep, and the second level is optional:
 
 ```
-Category            Textiles & Indian Fashion
-├─ Subcategory      Sarees            → 8 saree types
-└─ Products         Cotton Bedsheet Sets, Ethnic Wear, Cotton T-Shirts, Terry Towels
+Category            Textiles
+└─ Subcategory      Sarees            → 8 saree types
+
+Category            Home Accessories
+└─ Products         Cotton Bedsheet Sets, Terry Towels, Brass Hardware
 ```
 
 A product sits directly in its category unless it names a `subcategory`. To add a new group, push an
